@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Свадебное приглашение — Салех & Татьяна</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <style>
+        /* ----- БАЗА ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #e8ddd4;
+            font-family: 'Lora', 'Georgia', serif;
+            padding: 20px;
+        }
+
+        /* ----- КАРТОЧКА ----- */
+        .invitation-card {
+            max-width: 740px;
+            width: 100%;
+            background: linear-gradient(160deg, #fefcf9 0%, #f6eee8 100%);
+            border-radius: 32px;
+            padding: 45px 50px 45px 45px;
+            box-shadow: 0 30px 70px rgba(120, 90, 70, 0.18), 0 8px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e8dcd2;
+            position: relative;
+            animation: fadeInUp 0.9s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ----- ДВОЙНАЯ ЗОЛОТАЯ РАМКА ----- */
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            border: 1px solid rgba(180, 155, 135, 0.20);
+            border-radius: 24px;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .invitation-card::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid rgba(180, 155, 135, 0.10);
+            border-radius: 20px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* ===== ЗАКЛАДКИ ===== */
+        .lang-tabs {
+            position: absolute;
+            right: -20px;
+            top: 75px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 20;
+        }
+        .lang-tab {
+            padding: 8px 16px 8px 14px;
+            border-radius: 0 8px 8px 0;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(200, 168, 124, 0.25);
+            border-left: 2px solid rgba(200, 168, 124, 0.4);
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #5a4a3e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            min-width: 44px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+        .lang-tab::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 4px;
+            height: calc(100% + 2px);
+            background: transparent;
+            border-radius: 4px 0 0 4px;
+            transition: background 0.3s ease;
+        }
+        .lang-tab:hover {
+            background: rgba(200, 168, 124, 0.2);
+            transform: translateX(-2px);
+        }
+        .lang-tab.active {
+            background: #c9a87c;
+            color: #fff;
+            border-color: #c9a87c;
+            box-shadow: -2px 0 16px rgba(200, 168, 124, 0.3), 0 4px 12px rgba(0, 0, 0, 0.06);
+            transform: translateX(-4px);
+        }
+        .lang-tab.active::after {
+            background: #b8956a;
+        }
+        .lang-tab.active:hover {
+            background: #c9a87c;
+            transform: translateX(-4px);
+        }
+
+        /* ===== ОРНАМЕНТ И ЗАГОЛОВОК ===== */
+        .header-top {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .ornament {
+            font-size: 20px;
+            color: #c9b0a0;
+            letter-spacing: 8px;
+            margin-bottom: 8px;
+            font-weight: 300;
+            font-family: 'Playfair Display', serif;
+        }
+        .invitation-title {
+            font-size: 12px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #b8956a;
+            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ===== БЛОК-ПОДЛОЖКА С КАРУСЕЛЬЮ ===== */
+        .hero-section {
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 28px;
+            overflow: hidden;
+            background: transparent;
+            border: 2px solid rgba(200, 168, 124, 0.4);
+            box-shadow: 0 0 0 1px rgba(200, 168, 124, 0.15), 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid rgba(200, 168, 124, 0.15);
+            border-radius: 22px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .hero-bg-slides {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            transition: transform 0.8s ease;
+        }
+        .hero-bg-slide {
+            width: 25%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+        .hero-bg-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.50) blur(1px);
+            opacity: 0.85;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 25px 30px 20px 30px;
+        }
+
+        /* ----- ИМЕНА ----- */
+        .names-wrapper {
+            position: relative;
+            padding: 10px 20px;
+            margin: 0 -10px 4px -10px;
+            border-radius: 60px;
+            background: rgba(0,0,0,0.20);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            width: auto;
+            padding-left: 30px;
+            padding-right: 30px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+        }
+        .names {
+            font-size: 54px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 4px;
+            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .names span { display: inline-block; }
+        .ampersand {
+            font-size: 40px;
+            color: #c9a87c;
+            margin: 0 14px;
+            font-weight: 400;
+            font-style: italic;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        /* ----- ДАТА ----- */
+        .date-wrapper {
+            display: inline-block;
+            padding: 12px 28px 14px 28px;
+            margin-top: 6px;
+            background: rgba(0,0,0,0.20);
+            backdrop-filter: blur(8px);
+            border-radius: 80px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+        }
+        .date-block {
+            font-size: 20px;
+            color: #fff;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .date-block .day {
+            font-size: 64px;
+            font-weight: 600;
+            color: #c9a87c;
+            display: block;
+            line-height: 1;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .date-block .month-year {
+            font-size: 22px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.9);
+            margin-top: 2px;
+        }
+        .date-block .time-tag {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 20px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            font-size: 15px;
+            color: #fff;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-family: 'Lora', serif;
+        }
+
+        /* ----- ТАЙМЕР ----- */
+        .timer-wrapper {
+            margin: 16px 0 6px 0;
+        }
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .timer-item {
+            text-align: center;
+            background: rgba(0,0,0,0.20);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px 4px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            min-width: 60px;
+        }
+        .timer-item .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: #c9a87c;
+            display: block;
+            line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .timer-item .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ===== ОСТАЛЬНОЙ КОНТЕНТ ===== */
+        .main-content {
+            position: relative;
+            z-index: 3;
+            background: transparent;
+            padding-top: 10px;
+        }
+
+        .divider-deco {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin: 30px auto;
+            color: #dccfc6;
+            font-size: 18px;
+            letter-spacing: 6px;
+        }
+        .divider-deco .line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #dccfc6, transparent);
+        }
+        .divider-deco .icon { color: #c9a87c; }
+
+        /* ----- ПРОГРАММА ----- */
+        .program-intro {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #5a4a3e;
+            text-align: left;
+            margin-bottom: 22px;
+            padding: 18px 22px;
+            background: #fcf8f5;
+            border-radius: 16px;
+            border-left: 5px solid #c9a87c;
+            box-shadow: 0 2px 10px rgba(140, 110, 90, 0.04);
+            font-family: 'Lora', serif;
+        }
+        .program-intro strong { color: #c9a87c; font-weight: 600; }
+        .program-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 10px 0 10px 0;
+            text-align: left;
+        }
+        .program-accordion details {
+            background: #fcf8f5;
+            border-radius: 18px;
+            border: 1px solid #ede3da;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(160, 130, 110, 0.04);
+            overflow: hidden;
+        }
+        .program-accordion details:hover {
+            box-shadow: 0 6px 20px rgba(160, 130, 110, 0.10);
+        }
+        .program-accordion details summary {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 24px;
+            cursor: pointer;
+            list-style: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #4d3e33;
+            border-radius: 18px;
+            transition: background 0.2s ease;
+            user-select: none;
+            font-family: 'Playfair Display', serif;
+        }
+        .program-accordion details summary::-webkit-details-marker { display: none; }
+        .program-accordion details summary .day-icon {
+            font-size: 30px;
+            width: 44px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .program-accordion details summary .day-title {
+            flex: 1;
+            letter-spacing: 0.5px;
+        }
+        .program-accordion details summary .day-title small {
+            display: block;
+            font-weight: 400;
+            font-size: 14px;
+            color: #b8a092;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+            font-family: 'Lora', serif;
+        }
+        .program-accordion details summary .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 400;
+            background: #e4d5ca;
+            color: #6b584b;
+            padding: 3px 14px;
+            border-radius: 30px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            font-family: 'Lora', serif;
+        }
+        .program-accordion details summary .badge-close {
+            background: #dccfc6;
+            color: #4d3e33;
+        }
+        .program-accordion details summary .badge-all {
+            background: #c9a87c;
+            color: #fff;
+        }
+        .program-accordion details summary .arrow {
+            font-size: 20px;
+            color: #c9a87c;
+            transition: transform 0.4s ease;
+            margin-left: auto;
+        }
+        .program-accordion details[open] summary .arrow {
+            transform: rotate(180deg);
+        }
+        .program-accordion details .content {
+            padding: 8px 24px 24px 24px;
+            border-top: 1px solid #f0e5dc;
+            margin-top: 4px;
+        }
+        .program-accordion details .content .desc-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #5a4a3e;
+            margin-bottom: 12px;
+            font-family: 'Lora', serif;
+        }
+        .program-accordion details .content .desc-text .addr {
+            display: block;
+            font-size: 14px;
+            color: #8a7566;
+            margin-top: 4px;
+            padding-left: 14px;
+            border-left: 3px solid #e4d5ca;
+        }
+        .program-accordion details .content .guest-note {
+            font-size: 14px;
+            color: #c9a87c;
+            background: #f8f2ed;
+            padding: 8px 18px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 6px;
+            font-style: italic;
+            font-family: 'Lora', serif;
+        }
+        .map-link-small {
+            display: inline-block;
+            padding: 8px 24px;
+            background: #ede3da;
+            color: #4d3e33;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            font-family: 'Lora', serif;
+            border: 1px solid #ddd0c6;
+            transition: all 0.25s ease;
+        }
+        .map-link-small:hover {
+            background: #dccfc6;
+            color: #2f2620;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(140, 110, 90, 0.08);
+        }
+        .timeline-inside {
+            margin-top: 20px;
+            padding: 18px 20px 14px 20px;
+            background: #f8f2ed;
+            border-radius: 16px;
+            border-left: 5px solid #c9a87c;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+        .timeline-inside .tl-title {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #c9a87c;
+            margin-bottom: 14px;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+        .timeline-inside .tl-item {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 7px 0;
+            font-size: 15px;
+            color: #5a4a3e;
+            border-bottom: 1px dashed #ede3da;
+            font-family: 'Lora', serif;
+        }
+        .timeline-inside .tl-item:last-child {
+            border-bottom: none;
+        }
+        .timeline-inside .tl-item .tl-time {
+            font-weight: 600;
+            color: #c9a87c;
+            min-width: 60px;
+            font-size: 16px;
+            font-family: 'Playfair Display', serif;
+        }
+        .timeline-inside .tl-item .tl-event .highlight {
+            color: #c9a87c;
+            font-weight: 400;
+        }
+
+        /* ----- БЛОКИ ----- */
+        .dresscode-block,
+        .important-block,
+        .rsvp-form-block {
+            margin-top: 32px;
+            padding: 22px 24px 18px 24px;
+            background: #fcf8f5;
+            border-radius: 20px;
+            border: 1px solid #ede3da;
+            text-align: left;
+            box-shadow: 0 2px 12px rgba(160, 130, 110, 0.04);
+        }
+        .dresscode-block .title,
+        .important-block .title,
+        .rsvp-form-block .title {
+            font-size: 13px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #c9a87c;
+            margin-bottom: 14px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        .dresscode-block p,
+        .important-block p,
+        .rsvp-form-block p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #5a4a3e;
+            margin-bottom: 8px;
+            font-family: 'Lora', serif;
+        }
+
+        /* ----- ПАЛИТРА ----- */
+        .color-swatches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px 20px;
+            margin: 18px 0 12px 0;
+        }
+        .color-swatch {
+            text-align: center;
+        }
+        .color-swatch .circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin: 0 auto 4px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            border: 2px solid #e8ddd4;
+            transition: transform 0.2s ease;
+        }
+        .color-swatch .circle:hover {
+            transform: scale(1.08);
+        }
+        .color-swatch .label {
+            font-size: 11px;
+            color: #7a6254;
+            display: block;
+            margin-top: 3px;
+            font-family: 'Lora', serif;
+        }
+
+        /* ----- RSVP (контакты) ----- */
+        .rsvp-block {
+            margin-top: 34px;
+            padding-top: 28px;
+            border-top: 1px solid #ede3da;
+        }
+        .rsvp-block .rsvp-label {
+            font-size: 13px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #c9a87c;
+            display: block;
+            margin-bottom: 14px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        .rsvp-block .contact {
+            font-size: 17px;
+            color: #4d3e33;
+            line-height: 2.2;
+            font-family: 'Lora', serif;
+        }
+        .rsvp-block .contact a {
+            color: #7a6254;
+            text-decoration: none;
+            border-bottom: 1px dotted #dccfc6;
+            transition: border-color 0.3s;
+        }
+        .rsvp-block .contact a:hover {
+            border-bottom-color: #c9a87c;
+        }
+        .rsvp-block .deadline {
+            font-size: 14px;
+            color: #b8a092;
+            margin-top: 12px;
+            letter-spacing: 0.5px;
+            font-family: 'Lora', serif;
+        }
+        .rsvp-block .deadline strong {
+            color: #c9a87c;
+            font-weight: 600;
+        }
+        .rsvp-block .note-extra {
+            font-size: 13px;
+            color: #b8a092;
+            margin-top: 8px;
+            font-family: 'Lora', serif;
+        }
+
+        /* ----- ЯЗЫКОВЫЕ КОНТЕЙНЕРЫ ----- */
+        .lang-container {
+            display: block;
+        }
+        .lang-container.hidden {
+            display: none;
+        }
+
+        /* ===== КНОПКА «НАВЕРХ» ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(200, 168, 124, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: #c9a87c;
+            box-shadow: 0 6px 24px rgba(200, 168, 124, 0.4);
+            transform: translateY(-2px);
+        }
+        .back-to-top:active {
+            transform: scale(0.95);
+        }
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 640px) {
+            .invitation-card {
+                padding: 20px 18px;
+                border-radius: 24px;
+            }
+            .invitation-card::before {
+                top: 8px;
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+                border-radius: 16px;
+            }
+            .invitation-card::after {
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+                border-radius: 12px;
+            }
+
+            .lang-tabs {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                gap: 6px;
+                margin-bottom: 16px;
+                flex-wrap: wrap;
+            }
+            .lang-tab {
+                border-radius: 30px;
+                border: 1px solid rgba(200, 168, 124, 0.2);
+                border-left: 1px solid rgba(200, 168, 124, 0.2);
+                padding: 4px 14px;
+                font-size: 12px;
+                text-align: center;
+                min-width: auto;
+                box-shadow: none;
+            }
+            .lang-tab::after {
+                display: none;
+            }
+            .lang-tab:hover {
+                transform: none;
+            }
+            .lang-tab.active {
+                transform: none;
+                box-shadow: 0 2px 8px rgba(200, 168, 124, 0.25);
+            }
+            .lang-tab.active:hover {
+                transform: none;
+            }
+
+            .hero-section { border-radius: 20px; }
+            .hero-section::before { top: 4px; left: 4px; right: 4px; bottom: 4px; border-radius: 16px; }
+            .hero-content { padding: 18px 16px 14px 16px; }
+            .names-wrapper { padding: 8px 16px; }
+            .names { font-size: 36px; }
+            .ampersand { font-size: 28px; margin: 0 8px; }
+            .date-wrapper { padding: 10px 16px 12px 16px; }
+            .date-block .day { font-size: 48px; }
+            .date-block .month-year { font-size: 18px; letter-spacing: 4px; }
+            .timer-item .num { font-size: 24px; }
+            .timer-item { min-width: 54px; padding: 4px 10px; }
+            .timer-grid { gap: 10px; }
+            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+            .program-accordion details summary { padding: 14px 16px; font-size: 16px; flex-wrap: wrap; gap: 8px; }
+            .program-accordion details summary .day-icon { font-size: 24px; width: 32px; }
+            .program-accordion details .content { padding: 6px 16px 16px 16px; }
+            .timeline-inside { padding: 14px; }
+            .timeline-inside .tl-item { font-size: 14px; gap: 10px; flex-wrap: wrap; }
+            .timeline-inside .tl-item .tl-time { min-width: 45px; font-size: 14px; }
+            .divider-deco { font-size: 14px; gap: 12px; margin: 20px auto; }
+            .divider-deco .line { width: 20px; }
+            .program-intro { font-size: 14px; padding: 14px 16px; }
+            .color-swatches { gap: 10px 14px; }
+            .color-swatch .circle { width: 36px; height: 36px; }
+            .dresscode-block, .important-block, .rsvp-form-block { padding: 16px 16px 14px 16px; }
+            .dresscode-block p, .important-block p, .rsvp-form-block p { font-size: 14px; }
+        }
+        @media (max-width: 400px) {
+            .names-wrapper { padding: 4px 10px; }
+            .names { font-size: 28px; }
+            .hero-content { padding: 14px 10px 10px 10px; }
+            .date-wrapper { padding: 8px 12px 10px 12px; }
+            .date-block .day { font-size: 38px; }
+            .timer-item .num { font-size: 20px; }
+            .timer-item { min-width: 44px; padding: 3px 8px; }
+            .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
+            .program-accordion details summary { font-size: 14px; padding: 12px 12px; }
+            .color-swatch .circle { width: 30px; height: 30px; }
+            .color-swatch .label { font-size: 10px; }
+            .lang-tab { font-size: 10px; padding: 3px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="invitation-card">
+
+    <!-- ===== ЗАКЛАДКИ ===== -->
+    <div class="lang-tabs" id="langTabs">
+        <button class="lang-tab active" data-lang="ru">RU</button>
+        <button class="lang-tab" data-lang="en">EN</button>
+        <button class="lang-tab" data-lang="ar">AR</button>
+        <button class="lang-tab" data-lang="myv">ЭРЗ</button>
+        <button class="lang-tab" data-lang="mdf">МОК</button>
+    </div>
+
+    <!-- ===== ОРНАМЕНТ И ЗАГОЛОВОК ===== -->
+    <div class="header-top">
+        <div class="ornament">✧ ✦ ✧</div>
+        <div class="invitation-title" data-lang-title>Свадебное приглашение</div>
+    </div>
+
+    <!-- ===== БЛОК-ПОДЛОЖКА С КАРУСЕЛЬЮ ===== -->
+    <div class="hero-section">
+        <div class="hero-bg" id="heroBg">
+            <div class="hero-bg-slides" id="heroBgSlides">
+                <!-- ⬇️ ЗАМЕНИТЕ НА СВОИ ФАЙЛЫ ⬇️ -->
+                <div class="hero-bg-slide"><img src="cat1.jpg" alt="Фон 1" /></div>
+                <div class="hero-bg-slide"><img src="cat2.jpg" alt="Фон 2" /></div>
+                <div class="hero-bg-slide"><img src="cat3.jpg" alt="Фон 3" /></div>
+                <div class="hero-bg-slide"><img src="cat4.jpg" alt="Фон 4" /></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="names-wrapper">
+                <div class="names">
+                    <span>Салех</span>
+                    <span class="ampersand">&</span>
+                    <span>Татьяна</span>
+                </div>
+            </div>
+            <div class="date-wrapper">
+                <div class="date-block">
+                    <span class="day">18</span>
+                    <span class="month-year" data-lang-month>Сентября 2026</span>
+                    <span class="time-tag" data-lang-time>Сбор гостей в 13:00</span>
+                </div>
+            </div>
+            <div class="timer-wrapper">
+                <div class="timer-grid">
+                    <div class="timer-item">
+                        <span class="num" id="days">00</span>
+                        <span class="label" data-lang-timer-days>дней</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="num" id="hours">00</span>
+                        <span class="label" data-lang-timer-hours>часов</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="num" id="minutes">00</span>
+                        <span class="label" data-lang-timer-minutes>минут</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ОСТАЛЬНОЙ КОНТЕНТ ===== -->
+    <div class="main-content">
+
+        <div class="divider-deco">
+            <span class="line"></span>
+            <span class="icon">✧ ✦ ✧</span>
+            <span class="line"></span>
+        </div>
+
+        <!-- РУССКИЙ -->
+        <div class="lang-container" id="lang-ru">
+
+            <div class="program-accordion">
+                <details>
+                    <summary>
+                        <span class="day-icon">💒</span>
+                        <span class="day-title">
+                            17 сентября
+                            <small>Роспись в ЗАГСе</small>
+                            <span class="badge badge-close">Для близких</span>
+                        </span>
+                        <span class="arrow">▾</span>
+                    </summary>
+                    <div class="content">
+                        <div class="desc-text">
+                            Дворец бракосочетания
+                            <span class="addr">📍 Республика Мордовия, г. Саранск, Советская ул., 47А</span>
+                        </div>
+                        <div style="margin-top: 14px;">
+                            <a href="https://yandex.ru/maps/org/dvorets_brakosochetaniya/1132364812/?ll=45.182950%2C54.181247&z=7" target="_blank" class="map-link-small">Открыть карту</a>
+                        </div>
+                    </div>
+                </details>
+
+                <details open>
+                    <summary>
+                        <span class="day-icon">🥂</span>
+                        <span class="day-title">
+                            18 сентября
+                            <small>Основное торжество в «Хурме»</small>
+                            <span class="badge badge-all">Все гости</span>
+                        </span>
+                        <span class="arrow">▾</span>
+                    </summary>
+                    <div class="content">
+                        <div class="desc-text">
+                            Ресторан «Хурма»
+                            <span class="addr">📍 Республика Мордовия, г. Саранск, Большевистская ул., 60А</span>
+                        </div>
+                        <div class="timeline-inside">
+                            <div class="tl-title">Программа дня</div>
+                            <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-event">Встреча гостей, аперитив</span></div>
+                            <div class="tl-item"><span class="tl-time">14:00</span><span class="tl-event">Торжественное открытие и поздравления</span></div>
+                            <div class="tl-item"><span class="tl-time">15:00</span><span class="tl-event">Банкет, тосты, развлекательная программа</span></div>
+                            <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-event">Музыкальная часть, танцы</span></div>
+                            <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-event"><span class="highlight">Завершение вечера</span></span></div>
+                        </div>
+                        <div style="margin-top: 18px;">
+                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Открыть карту ресторана</a>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="day-icon">🎉</span>
+                        <span class="day-title">
+                            19 сентября
+                            <small>Неформальный день</small>
+                            <span class="badge badge-all">Все гости</span>
+                        </span>
+                        <span class="arrow">▾</span>
+                    </summary>
+                    <div class="content">
+                        <div class="desc-text">
+                            Уютный неформальный день в кругу близких.
+                            <span class="addr">📍 Место проведения уточняется</span>
+                        </div>
+                        <span style="font-size:13px; color:#b8a092; background:#ede3da; padding:5px 20px; border-radius:40px; display:inline-block; font-family:'Lora',serif;">
+                            Информация появится позже
+                        </span>
+                    </div>
+                </details>
+            </div>
+
+            <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+
+            <!-- ===== ДРЕСС-КОД ===== -->
+            <div class="dresscode-block">
+                <div class="title">Дресс-код</div>
+                <p style="margin-bottom:4px;"><strong>17 и 18 сентября</strong> — официальная часть:</p>
+                <p>мы будем рады видеть вас в <strong>нюдовых, пастельных или сдержанных классических</strong> нарядах. Пожалуйста, <strong>избегайте белого, чёрного, ярких неоновых цветов и крупных принтов</strong>.</p>
+                <div class="color-swatches">
+                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;"></div><span class="label">Бежевый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;"></div><span class="label">Пыльная роза</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;"></div><span class="label">Персиковый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#f0d8c8;"></div><span class="label">Шампань</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;"></div><span class="label">Лавандовый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;"></div><span class="label">Мятный</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;"></div><span class="label">Серо-голубой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;"></div><span class="label">Оливковый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;"></div><span class="label">Горчичный</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;"></div><span class="label">Графит</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;"></div><span class="label">Тёмно-синий</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;"></div><span class="label">Бордовый</span></div>
+                </div>
+                <p style="margin-top:12px;"><strong>19 сентября (неформальный день):</strong> свободный стиль, комфортная повседневная одежда.</p>
+            </div>
+
+            <!-- ===== ПРОСЬБЫ ===== -->
+            <div class="important-block">
+                <div class="title">С пожеланиями</div>
+                <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
+                    <span style="font-size:22px; color:#c9a87c;">🌿</span>
+                    <div><strong>Вместо цветов</strong> — мы будем бесконечно рады вашему присутствию и тёплым словам. Если у вас возникнет желание подарить нам цветы, просим отказаться от этой затеи.</div>
+                </div>
+                <div style="display:flex; gap:12px; align-items:flex-start;">
+                    <span style="font-size:22px; color:#c9a87c;">👶</span>
+                    <div><strong>О детях</strong> — к сожалению, мы не сможем обеспечить комфортный отдых для маленьких гостей, поэтому просим вас воздержаться от присутствия детей на торжестве.</div>
+                </div>
+                <p style="margin-top:14px;">❤️ Заранее благодарим за понимание и поддержку!</p>
+            </div>
+
+        </div>
+
+        <!-- АНГЛИЙСКИЙ (заполните по аналогии) -->
+        <div class="lang-container hidden" id="lang-en">
+            <div class="program-intro">
+                <strong>The main celebration for all guests will take place on September 18</strong> (the day's program is below).<br />
+                We also invite our closest relatives and friends to join us <strong>on September 17</strong> for the ceremony at the Wedding Palace.<br />
+                <span style="color:#c9a87c;">▼</span> Details for each day are in the expandable sections.
+            </div>
+            <!-- остальной контент на английском -->
+            <div class="rsvp-block">
+                <span class="rsvp-label">RSVP</span>
+                <div class="contact">
+                    📞 <a href="tel:+79991234567">+7 999 123-45-67</a><br />
+                    ✉️ <a href="mailto:wedding@example.com">wedding@example.com</a>
+                </div>
+                <div class="deadline">Please confirm by <strong>September 1, 2026</strong></div>
+                <div class="note-extra">(Please indicate which days you plan to attend)</div>
+            </div>
+        </div>
+
+        <!-- АРАБСКИЙ, ЭРЗЯНСКИЙ, МОКШАНСКИЙ — добавьте по аналогии -->
+        <div class="lang-container hidden" id="lang-ar"><!-- --></div>
+        <div class="lang-container hidden" id="lang-myv"><!-- --></div>
+        <div class="lang-container hidden" id="lang-mdf"><!-- --></div>
+
+        <!-- ===== ФОРМА RSVP (Яндекс Форма) ===== -->
+        <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+
+        <div class="rsvp-form-block">
+            <div class="title">Быстрое подтверждение</div>
+            <p>Заполните форму, и мы будем знать, что вы с нами! 😊</p>
+
+            <!-- Яндекс Форма (без embed.js, только iframe) -->
+            <iframe src="https://forms.yandex.ru/u/6a78a143eb614676a8de135b?iframe=1" 
+                    frameborder="0" 
+                    name="ya-form-6a78a143eb614676a8de135b" 
+                    width="100%" 
+                    style="min-height: 550px; border: none;">
+            </iframe>
+        </div>
+
+    </div>
+    <!-- /main-content -->
+
+</div>
+<!-- /invitation-card -->
+
+<!-- ===== КНОПКА «НАВЕРХ» ===== -->
+<button class="back-to-top" id="backToTop" aria-label="Наверх">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<!-- ===== JavaScript ===== -->
+<script>
+    // ---------- ТАЙМЕР ----------
+    function updateTimer() {
+        const target = new Date('2026-09-18T13:00:00+03:00').getTime();
+        const now = Date.now();
+        let diff = target - now;
+        if (diff < 0) diff = 0;
+        document.getElementById('days').textContent = String(Math.floor(diff / (1000*60*60*24))).padStart(2, '0');
+        document.getElementById('hours').textContent = String(Math.floor((diff / (1000*60*60)) % 24)).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(Math.floor((diff / (1000*60)) % 60)).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // ---------- КАРУСЕЛЬ-ФОН ----------
+    const heroSlides = document.getElementById('heroBgSlides');
+    const heroTotal = heroSlides.children.length;
+    let heroIndex = 0;
+    let heroInterval;
+
+    function goToHeroSlide(index) {
+        if (index < 0) index = heroTotal - 1;
+        if (index >= heroTotal) index = 0;
+        heroIndex = index;
+        heroSlides.style.transform = 'translateX(-' + (heroIndex * 100 / heroTotal) + '%)';
+    }
+
+    function nextHeroSlide() { goToHeroSlide(heroIndex + 1); }
+
+    heroInterval = setInterval(nextHeroSlide, 5000);
+
+    // ---------- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ ----------
+    const langTabs = document.querySelectorAll('.lang-tab');
+    const containers = {
+        ru: document.getElementById('lang-ru'),
+        en: document.getElementById('lang-en'),
+        ar: document.getElementById('lang-ar'),
+        myv: document.getElementById('lang-myv'),
+        mdf: document.getElementById('lang-mdf')
+    };
+
+    const monthEl = document.querySelector('[data-lang-month]');
+    const timeEl = document.querySelector('[data-lang-time]');
+    const titleEl = document.querySelector('[data-lang-title]');
+    const timerLabels = {
+        days: document.querySelector('[data-lang-timer-days]'),
+        hours: document.querySelector('[data-lang-timer-hours]'),
+        minutes: document.querySelector('[data-lang-timer-minutes]'),
+        seconds: document.querySelector('[data-lang-timer-seconds]')
+    };
+
+    const translations = {
+        ru: { month: 'Сентября 2026', time: 'Сбор гостей в 13:00', title: 'Свадебное приглашение', timer: { days: 'дней', hours: 'часов', minutes: 'минут', seconds: 'секунд' } },
+        en: { month: 'September 2026', time: 'Guest gathering at 13:00', title: 'Wedding invitation', timer: { days: 'days', hours: 'hours', minutes: 'minutes', seconds: 'seconds' } },
+        ar: { month: 'سبتمبر 2026', time: 'تجمع الضيوف الساعة 13:00', title: 'دعوة زفاف', timer: { days: 'أيام', hours: 'ساعات', minutes: 'دقائق', seconds: 'ثواني' } },
+        myv: { month: 'Сентябрь 2026', time: 'Ярсыцятнень вачкодема 13:00', title: 'Свадьбань приглашения', timer: { days: 'чить', hours: 'часть', minutes: 'минут', seconds: 'секунд' } },
+        mdf: { month: 'Сентябрь 2026', time: 'Сядасть ванома 13:00', title: 'Свадьбань приглашения', timer: { days: 'шить', hours: 'часть', minutes: 'минут', seconds: 'секунд' } }
+    };
+
+    function setLanguage(lang) {
+        for (var key in containers) {
+            containers[key].classList.toggle('hidden', key !== lang);
+        }
+        langTabs.forEach(function(tab) {
+            tab.classList.toggle('active', tab.dataset.lang === lang);
+        });
+        var t = translations[lang];
+        if (t) {
+            monthEl.textContent = t.month;
+            timeEl.textContent = t.time;
+            titleEl.textContent = t.title;
+            timerLabels.days.textContent = t.timer.days;
+            timerLabels.hours.textContent = t.timer.hours;
+            timerLabels.minutes.textContent = t.timer.minutes;
+            timerLabels.seconds.textContent = t.timer.seconds;
+        }
+    }
+
+    langTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            setLanguage(tab.dataset.lang);
+        });
+    });
+
+    // ---------- КНОПКА «НАВЕРХ» ----------
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+
+</body>
+</html>
