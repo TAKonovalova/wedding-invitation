@@ -604,55 +604,6 @@
             font-family: 'Lora', serif;
         }
 
-        /* ----- RSVP (контакты) ----- */
-        .rsvp-block {
-            margin-top: 34px;
-            padding-top: 28px;
-            border-top: 1px solid #ede3da;
-        }
-        .rsvp-block .rsvp-label {
-            font-size: 13px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: #c9a87c;
-            display: block;
-            margin-bottom: 14px;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-        .rsvp-block .contact {
-            font-size: 17px;
-            color: #4d3e33;
-            line-height: 2.2;
-            font-family: 'Lora', serif;
-        }
-        .rsvp-block .contact a {
-            color: #7a6254;
-            text-decoration: none;
-            border-bottom: 1px dotted #dccfc6;
-            transition: border-color 0.3s;
-        }
-        .rsvp-block .contact a:hover {
-            border-bottom-color: #c9a87c;
-        }
-        .rsvp-block .deadline {
-            font-size: 14px;
-            color: #b8a092;
-            margin-top: 12px;
-            letter-spacing: 0.5px;
-            font-family: 'Lora', serif;
-        }
-        .rsvp-block .deadline strong {
-            color: #c9a87c;
-            font-weight: 600;
-        }
-        .rsvp-block .note-extra {
-            font-size: 13px;
-            color: #b8a092;
-            margin-top: 8px;
-            font-family: 'Lora', serif;
-        }
-
         /* ----- ЯЗЫКОВЫЕ КОНТЕЙНЕРЫ ----- */
         .lang-container {
             display: block;
@@ -813,9 +764,9 @@
             }
         }
 
-        /* ===== УМЕНЬШАЕМ БЛОК С ФОРМОЙ НА 20% ===== */
+        /* ===== УВЕЛИЧИВАЕМ БЛОК С ФОРМОЙ НА 20% (было 440, стало 530) ===== */
         .rsvp-form-block iframe {
-            min-height: 440px; /* было 550px, уменьшили на 20% */
+            min-height: 530px; 
             border: none;
             width: 100%;
         }
@@ -880,7 +831,6 @@
                         <span class="num" id="minutes">00</span>
                         <span class="label" data-lang-timer-minutes>минут</span>
                     </div>
-                    <!-- Секунды удалены -->
                 </div>
             </div>
         </div>
@@ -972,7 +922,9 @@
                     </div>
                 </details>
             </div>
+
             <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+
             <div class="dresscode-block">
                 <div class="title">Дресс-код</div>
                 <p style="margin-bottom:4px;"><strong>17 и 18 сентября</strong> — официальная часть:</p>
@@ -993,11 +945,14 @@
                 </div>
                 <p style="margin-top:12px;"><strong>19 сентября (неформальный день):</strong> свободный стиль, комфортная повседневная одежда.</p>
             </div>
+
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+
             <div class="important-block">
                 <div class="title">С пожеланиями</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Вместо цветов</strong> — мы будем бесконечно рады вашему присутствию и тёплым словам. Если у вас возникнет желание подарить нам цветы, просим отказаться от этой затеи.</div>
+                    <div><strong>Вместо цветов</strong> — ваше присутствие — лучший подарок. Если вы хотите нас порадовать, мы будем очень благодарны за финансовую поддержку, которая поможет нам воплотить наши планы. Просим вас не дарить цветы — мы ценим ваше внимание и заботу.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1005,15 +960,21 @@
                 </div>
                 <p style="margin-top:14px;">❤️ Заранее благодарим за понимание и поддержку!</p>
             </div>
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
-            <div class="rsvp-block">
-                <span class="rsvp-label">Подтвердить присутствие</span>
-                <div class="contact">
-                    📞 <a href="tel:+79991234567">+7 999 123-45-67</a><br />
-                    ✉️ <a href="mailto:wedding@example.com">wedding@example.com</a>
-                </div>
-                <div class="deadline">Просим подтвердить до <strong>1 сентября 2026</strong></div>
-                <div class="note-extra">(Пожалуйста, укажите, на какие дни вы планируете прийти)</div>
+
+            <!-- Блок с контактами (RSVP) полностью удалён -->
+            <!-- ===== ФОРМА RSVP (Яндекс Форма) ===== -->
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
+
+            <div class="rsvp-form-block">
+                <div class="title">Быстрое подтверждение</div>
+                <p>Заполните форму, и мы будем знать, что вы с нами! 😊</p>
+
+                <iframe src="https://forms.yandex.ru/u/6a78a143eb614676a8de135b?iframe=1" 
+                        frameborder="0" 
+                        name="ya-form-6a78a143eb614676a8de135b" 
+                        width="100%" 
+                        style="min-height: 530px; border: none;">
+                </iframe>
             </div>
         </div>
 
@@ -1094,7 +1055,9 @@
                     </div>
                 </details>
             </div>
+
             <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+
             <div class="dresscode-block">
                 <div class="title">Dress code</div>
                 <p style="margin-bottom:4px;"><strong>September 17 and 18</strong> — formal part:</p>
@@ -1115,11 +1078,14 @@
                 </div>
                 <p style="margin-top:12px;"><strong>September 19 (informal day):</strong> casual, comfortable everyday wear.</p>
             </div>
+
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+
             <div class="important-block">
                 <div class="title">With warm wishes</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Instead of flowers</strong> — we will be infinitely happy with your presence and kind words. If you have a desire to give us flowers, we kindly ask you to refrain.</div>
+                    <div><strong>Instead of flowers</strong> — your presence is the best gift. If you wish to give us something, we would be very grateful for financial support to help us realize our plans. Please don't give flowers — we appreciate your attention and care.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1127,15 +1093,19 @@
                 </div>
                 <p style="margin-top:14px;">❤️ Thank you in advance for your understanding and support!</p>
             </div>
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
-            <div class="rsvp-block">
-                <span class="rsvp-label">RSVP</span>
-                <div class="contact">
-                    📞 <a href="tel:+79991234567">+7 999 123-45-67</a><br />
-                    ✉️ <a href="mailto:wedding@example.com">wedding@example.com</a>
-                </div>
-                <div class="deadline">Please confirm by <strong>September 1, 2026</strong></div>
-                <div class="note-extra">(Please indicate which days you plan to attend)</div>
+
+            <!-- Блок с контактами удалён -->
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
+
+            <div class="rsvp-form-block">
+                <div class="title">Quick confirmation</div>
+                <p>Fill in the form and we'll know you're with us! 😊</p>
+                <iframe src="https://forms.yandex.ru/u/6a78a143eb614676a8de135b?iframe=1" 
+                        frameborder="0" 
+                        name="ya-form-6a78a143eb614676a8de135b" 
+                        width="100%" 
+                        style="min-height: 530px; border: none;">
+                </iframe>
             </div>
         </div>
 
@@ -1216,7 +1186,9 @@
                     </div>
                 </details>
             </div>
+
             <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+
             <div class="dresscode-block" style="direction: rtl; text-align: right;">
                 <div class="title">قواعد اللباس</div>
                 <p style="margin-bottom:4px;"><strong>17 و 18 سبتمبر</strong> — الجزء الرسمي:</p>
@@ -1237,11 +1209,14 @@
                 </div>
                 <p style="margin-top:12px;"><strong>19 سبتمبر (يوم غير رسمي):</strong> ملابس مريحة يومية.</p>
             </div>
+
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+
             <div class="important-block" style="direction: rtl; text-align: right;">
                 <div class="title">مع أطيب التمنيات</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>بدلاً من الزهور</strong> — سنكون سعداء للغاية بحضوركم وكلماتكم الطيبة. إذا كانت لديكم رغبة في تقديم الزهور، نرجو الامتناع عن ذلك.</div>
+                    <div><strong>بدلاً من الزهور</strong> — حضوركم هو أفضل هدية. إذا كنتم ترغبون في إسعادنا، سنكون ممتنين جداً للدعم المالي الذي سيساعدنا في تحقيق خططنا. نرجو منكم عدم إهداء الزهور — نقدر اهتمامكم ورعايتكم.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1249,15 +1224,19 @@
                 </div>
                 <p style="margin-top:14px;">❤️ نشكركم مسبقاً على تفهمكم ودعمكم!</p>
             </div>
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
-            <div class="rsvp-block" style="direction: rtl; text-align: right;">
-                <span class="rsvp-label">تأكيد الحضور</span>
-                <div class="contact">
-                    📞 <a href="tel:+79991234567">+7 999 123-45-67</a><br />
-                    ✉️ <a href="mailto:wedding@example.com">wedding@example.com</a>
-                </div>
-                <div class="deadline">يرجى التأكيد بحلول <strong>1 سبتمبر 2026</strong></div>
-                <div class="note-extra">(يرجى الإشارة إلى الأيام التي تخططون لحضورها)</div>
+
+            <!-- удалён блок контактов -->
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
+
+            <div class="rsvp-form-block" style="direction: rtl; text-align: right;">
+                <div class="title">تأكيد سريع</div>
+                <p>املأ النموذج وسنعرف أنك معنا! 😊</p>
+                <iframe src="https://forms.yandex.ru/u/6a78a143eb614676a8de135b?iframe=1" 
+                        frameborder="0" 
+                        name="ya-form-6a78a143eb614676a8de135b" 
+                        width="100%" 
+                        style="min-height: 530px; border: none;">
+                </iframe>
             </div>
         </div>
 
@@ -1338,7 +1317,9 @@
                     </div>
                 </details>
             </div>
+
             <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+
             <div class="dresscode-block">
                 <div class="title">Дресс-код</div>
                 <p style="margin-bottom:4px;"><strong>17 ды 18 сентябрь</strong> — официальной пелькс:</p>
@@ -1359,11 +1340,14 @@
                 </div>
                 <p style="margin-top:12px;"><strong>19 сентября (неформальной чи):</strong> оймень стиль, комфортной повседневной одежда.</p>
             </div>
+
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+
             <div class="important-block">
                 <div class="title">Ёвкстнэнь марто</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Цветтнень эйстэ</strong> — минь пешксе оймень эрьва кода тынь улицякс ды шумбрат-кирдемат. Кие мери максомс цветт, вешемс а саемс.</div>
+                    <div><strong>Цветтнень эйстэ</strong> — тынь улицякс — паро подарок. Кие мери максомс подарок, минь сюкпрянь пешксе карматано финансовой полавтомаст туртов. Вешемс а максомс цветт — минь содатано эсь мелень ды вечкемань.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1371,15 +1355,19 @@
                 </div>
                 <p style="margin-top:14px;">❤️ Заранее сюкпря содамост ды полавтомаст!</p>
             </div>
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
-            <div class="rsvp-block">
-                <span class="rsvp-label">Улицякс содамо</span>
-                <div class="contact">
-                    📞 <a href="tel:+79991234567">+7 999 123-45-67</a><br />
-                    ✉️ <a href="mailto:wedding@example.com">wedding@example.com</a>
-                </div>
-                <div class="deadline">Содамо <strong>1 сентября 2026</strong> видс</div>
-                <div class="note-extra">(Содатомс, кодат чить улицякс)</div>
+
+            <!-- удалён блок контактов -->
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
+
+            <div class="rsvp-form-block">
+                <div class="title">Киякс содамо</div>
+                <p>Топавтома форма, ды минь содатано, тынь марто! 😊</p>
+                <iframe src="https://forms.yandex.ru/u/6a78a143eb614676a8de135b?iframe=1" 
+                        frameborder="0" 
+                        name="ya-form-6a78a143eb614676a8de135b" 
+                        width="100%" 
+                        style="min-height: 530px; border: none;">
+                </iframe>
             </div>
         </div>
 
@@ -1460,7 +1448,9 @@
                     </div>
                 </details>
             </div>
+
             <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+
             <div class="dresscode-block">
                 <div class="title">Дресс-код</div>
                 <p style="margin-bottom:4px;"><strong>17 и 18 сентябрь</strong> — официальной пелькс:</p>
@@ -1481,11 +1471,14 @@
                 </div>
                 <p style="margin-top:12px;"><strong>19 сентября (неформальной ши):</strong> оймень стиль, комфортной повседневной одежда.</p>
             </div>
+
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+
             <div class="important-block">
                 <div class="title">Ёвкстнень мархта</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Цветтнень эйста</strong> — минь сядасть сявомс васьфтома тынь улицякс и шумбрат-кирдемат. Кие сядасть максомс цветт, вешемс аф максомс.</div>
+                    <div><strong>Цветтнень эйста</strong> — тынь улицякс — сяда паро подарок. Кие сядасть максомс подарок, минь сядасть сюкпрянянь полавтома финансовой полавтомаст туркс. Вешемс аф максомс цветт — минь содатама эсь мельть и вечкемать.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1493,31 +1486,20 @@
                 </div>
                 <p style="margin-top:14px;">❤️ Заранее сюкпря содамост и полавтомаст!</p>
             </div>
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
-            <div class="rsvp-block">
-                <span class="rsvp-label">Улицякс содамо</span>
-                <div class="contact">
-                    📞 <a href="tel:+79991234567">+7 999 123-45-67</a><br />
-                    ✉️ <a href="mailto:wedding@example.com">wedding@example.com</a>
-                </div>
-                <div class="deadline">Содамо <strong>1 сентября 2026</strong> видс</div>
-                <div class="note-extra">(Содатомс, кодат шить улицякс)</div>
+
+            <!-- удалён блок контактов -->
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
+
+            <div class="rsvp-form-block">
+                <div class="title">Улицякс содамо</div>
+                <p>Топавтома форма, и минь содатама, тынь мархто! 😊</p>
+                <iframe src="https://forms.yandex.ru/u/6a78a143eb614676a8de135b?iframe=1" 
+                        frameborder="0" 
+                        name="ya-form-6a78a143eb614676a8de135b" 
+                        width="100%" 
+                        style="min-height: 530px; border: none;">
+                </iframe>
             </div>
-        </div>
-
-        <!-- ===== ФОРМА RSVP (Яндекс Форма) с уменьшенной высотой ===== -->
-        <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
-
-        <div class="rsvp-form-block">
-            <div class="title">Быстрое подтверждение</div>
-            <p>Заполните форму, и мы будем знать, что вы с нами! 😊</p>
-
-            <iframe src="https://forms.yandex.ru/u/6a78a143eb614676a8de135b?iframe=1" 
-                    frameborder="0" 
-                    name="ya-form-6a78a143eb614676a8de135b" 
-                    width="100%" 
-                    style="min-height: 440px; border: none;">
-            </iframe>
         </div>
 
     </div>
@@ -1580,8 +1562,7 @@
     const timerLabels = {
         days: document.querySelector('[data-lang-timer-days]'),
         hours: document.querySelector('[data-lang-timer-hours]'),
-        minutes: document.querySelector('[data-lang-timer-minutes]'),
-        // seconds удалён
+        minutes: document.querySelector('[data-lang-timer-minutes]')
     };
 
     const translations = {
