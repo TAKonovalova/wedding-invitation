@@ -290,7 +290,7 @@
             font-family: 'Lora', serif;
         }
 
-        /* ----- ТАЙМЕР (с секундами) ----- */
+        /* ----- ТАЙМЕР (без секунд) ----- */
         .timer-wrapper {
             margin: 16px 0 6px 0;
         }
@@ -790,6 +790,10 @@
             .color-swatch .circle { width: 36px; height: 36px; }
             .dresscode-block, .important-block, .rsvp-form-block { padding: 16px 16px 14px 16px; }
             .dresscode-block p, .important-block p, .rsvp-form-block p { font-size: 14px; }
+            /* Уменьшаем форму на мобильных */
+            .rsvp-form-block iframe {
+                min-height: 350px !important;
+            }
         }
         @media (max-width: 400px) {
             .names-wrapper { padding: 4px 10px; }
@@ -804,6 +808,16 @@
             .color-swatch .circle { width: 30px; height: 30px; }
             .color-swatch .label { font-size: 10px; }
             .lang-tab { font-size: 10px; padding: 3px 10px; }
+            .rsvp-form-block iframe {
+                min-height: 280px !important;
+            }
+        }
+
+        /* ===== УМЕНЬШАЕМ БЛОК С ФОРМОЙ НА 20% ===== */
+        .rsvp-form-block iframe {
+            min-height: 440px; /* было 550px, уменьшили на 20% */
+            border: none;
+            width: 100%;
         }
     </style>
 </head>
@@ -866,10 +880,7 @@
                         <span class="num" id="minutes">00</span>
                         <span class="label" data-lang-timer-minutes>минут</span>
                     </div>
-                    <div class="timer-item">
-                        <span class="num" id="seconds">00</span>
-                        <span class="label" data-lang-timer-seconds>секунд</span>
-                    </div>
+                    <!-- Секунды удалены -->
                 </div>
             </div>
         </div>
@@ -1494,7 +1505,7 @@
             </div>
         </div>
 
-        <!-- ===== ФОРМА RSVP (Яндекс Форма) ===== -->
+        <!-- ===== ФОРМА RSVP (Яндекс Форма) с уменьшенной высотой ===== -->
         <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
         <div class="rsvp-form-block">
@@ -1505,7 +1516,7 @@
                     frameborder="0" 
                     name="ya-form-6a78a143eb614676a8de135b" 
                     width="100%" 
-                    style="min-height: 550px; border: none;">
+                    style="min-height: 440px; border: none;">
             </iframe>
         </div>
 
@@ -1522,7 +1533,7 @@
 
 <!-- ===== JavaScript ===== -->
 <script>
-    // ---------- ТАЙМЕР (все 4 значения: дни, часы, минуты, секунды) ----------
+    // ---------- ТАЙМЕР (только дни, часы, минуты) ----------
     function updateTimer() {
         const target = new Date('2026-09-18T13:00:00+03:00').getTime();
         const now = Date.now();
@@ -1531,7 +1542,6 @@
         document.getElementById('days').textContent = String(Math.floor(diff / (1000*60*60*24))).padStart(2, '0');
         document.getElementById('hours').textContent = String(Math.floor((diff / (1000*60*60)) % 24)).padStart(2, '0');
         document.getElementById('minutes').textContent = String(Math.floor((diff / (1000*60)) % 60)).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
     }
     updateTimer();
     setInterval(updateTimer, 1000);
@@ -1571,15 +1581,15 @@
         days: document.querySelector('[data-lang-timer-days]'),
         hours: document.querySelector('[data-lang-timer-hours]'),
         minutes: document.querySelector('[data-lang-timer-minutes]'),
-        seconds: document.querySelector('[data-lang-timer-seconds]')
+        // seconds удалён
     };
 
     const translations = {
-        ru: { month: 'Сентября 2026', time: 'Сбор гостей в 13:00', title: 'Свадебное приглашение', timer: { days: 'дней', hours: 'часов', minutes: 'минут', seconds: 'секунд' } },
-        en: { month: 'September 2026', time: 'Guest gathering at 13:00', title: 'Wedding invitation', timer: { days: 'days', hours: 'hours', minutes: 'minutes', seconds: 'seconds' } },
-        ar: { month: 'سبتمبر 2026', time: 'تجمع الضيوف الساعة 13:00', title: 'دعوة زفاف', timer: { days: 'أيام', hours: 'ساعات', minutes: 'دقائق', seconds: 'ثواني' } },
-        myv: { month: 'Сентябрь 2026', time: 'Ярсыцятнень вачкодема 13:00', title: 'Свадьбань приглашения', timer: { days: 'чить', hours: 'часть', minutes: 'минут', seconds: 'секунд' } },
-        mdf: { month: 'Сентябрь 2026', time: 'Сядасть ванома 13:00', title: 'Свадьбань приглашения', timer: { days: 'шить', hours: 'часть', minutes: 'минут', seconds: 'секунд' } }
+        ru: { month: 'Сентября 2026', time: 'Сбор гостей в 13:00', title: 'Свадебное приглашение', timer: { days: 'дней', hours: 'часов', minutes: 'минут' } },
+        en: { month: 'September 2026', time: 'Guest gathering at 13:00', title: 'Wedding invitation', timer: { days: 'days', hours: 'hours', minutes: 'minutes' } },
+        ar: { month: 'سبتمبر 2026', time: 'تجمع الضيوف الساعة 13:00', title: 'دعوة زفاف', timer: { days: 'أيام', hours: 'ساعات', minutes: 'دقائق' } },
+        myv: { month: 'Сентябрь 2026', time: 'Ярсыцятнень вачкодема 13:00', title: 'Свадьбань приглашения', timer: { days: 'чить', hours: 'часть', minutes: 'минут' } },
+        mdf: { month: 'Сентябрь 2026', time: 'Сядасть ванома 13:00', title: 'Свадьбань приглашения', timer: { days: 'шить', hours: 'часть', minutes: 'минут' } }
     };
 
     function setLanguage(lang) {
@@ -1597,7 +1607,6 @@
             timerLabels.days.textContent = t.timer.days;
             timerLabels.hours.textContent = t.timer.hours;
             timerLabels.minutes.textContent = t.timer.minutes;
-            timerLabels.seconds.textContent = t.timer.seconds;
         }
     }
 
