@@ -290,7 +290,7 @@
             font-family: 'Lora', serif;
         }
 
-        /* ----- ТАЙМЕР ----- */
+        /* ----- ТАЙМЕР (с секундами) ----- */
         .timer-wrapper {
             margin: 16px 0 6px 0;
         }
@@ -865,6 +865,10 @@
                     <div class="timer-item">
                         <span class="num" id="minutes">00</span>
                         <span class="label" data-lang-timer-minutes>минут</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="num" id="seconds">00</span>
+                        <span class="label" data-lang-timer-seconds>секунд</span>
                     </div>
                 </div>
             </div>
@@ -1518,7 +1522,7 @@
 
 <!-- ===== JavaScript ===== -->
 <script>
-    // ---------- ТАЙМЕР ----------
+    // ---------- ТАЙМЕР (все 4 значения: дни, часы, минуты, секунды) ----------
     function updateTimer() {
         const target = new Date('2026-09-18T13:00:00+03:00').getTime();
         const now = Date.now();
@@ -1532,7 +1536,7 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
-    // ---------- КАРУСЕЛЬ-ФОН (работает каждые 5 секунд) ----------
+    // ---------- КАРУСЕЛЬ-ФОН (переключается каждые 5 секунд) ----------
     const heroSlides = document.getElementById('heroBgSlides');
     const heroTotal = heroSlides.children.length;
     let heroIndex = 0;
@@ -1547,7 +1551,7 @@
 
     function nextHeroSlide() { goToHeroSlide(heroIndex + 1); }
 
-    // Старт автопрокрутки
+    // Запускаем автопрокрутку
     heroInterval = setInterval(nextHeroSlide, 5000);
 
     // ---------- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ ----------
