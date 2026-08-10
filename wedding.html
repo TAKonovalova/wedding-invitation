@@ -314,11 +314,10 @@
             display: block;
             line-height: 1.2;
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-            /* ----- УСТРАНЯЕМ МИГАНИЕ ----- */
             font-variant-numeric: tabular-nums;
-            min-width: 2ch; /* фиксируем ширину для двух цифр */
+            min-width: 2ch;
             display: inline-block;
-            will-change: contents; /* подсказка браузеру */
+            will-change: contents;
             backface-visibility: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -973,7 +972,7 @@
         <!-- ===== РУССКИЙ ===== -->
         <div class="lang-container" id="lang-ru">
             <div class="welcome-text">
-                <div class="greeting">Дорогие друзья и родные!</div>
+                <div class="greeting">Дорогие родные и друзья!</div>
                 <p class="message">
                     Мы рады сообщить вам, что в нашей жизни наступает важный и трогательный момент – мы создаём семью!<br />
                     Приглашаем вас разделить с нами радость этого дня, стать частью нашей истории и подарить нам тепло своих улыбок.
@@ -1111,7 +1110,7 @@
         <!-- ===== АНГЛИЙСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-en">
             <div class="welcome-text">
-                <div class="greeting">Dear friends and family!</div>
+                <div class="greeting">Dear family and friends!</div>
                 <p class="message">
                     We are happy to announce that an important and touching moment is coming in our lives – we are starting a family!<br />
                     We invite you to share the joy of this day with us, to become part of our story and give us the warmth of your smiles.
@@ -1249,7 +1248,7 @@
         <!-- ===== АРАБСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-ar">
             <div class="welcome-text" style="direction: rtl; text-align: center;">
-                <div class="greeting">أعزائي الأصدقاء والعائلة!</div>
+                <div class="greeting">أعزائي العائلة والأصدقاء!</div>
                 <p class="message">
                     يسعدنا أن نعلن لكم أن لحظة مهمة ومؤثرة قد حانت في حياتنا – نحن نكوّن عائلة!<br />
                     ندعوكم لمشاركتنا فرحة هذا اليوم، لتكونوا جزءاً من قصتنا وتمنحونا دفء ابتساماتكم.
@@ -1387,7 +1386,7 @@
         <!-- ===== ЭРЗЯНСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-myv">
             <div class="welcome-text">
-                <div class="greeting">Ялгат ды родственнойть!</div>
+                <div class="greeting">Родственнойть ды ялгат!</div>
                 <p class="message">
                     Минь содатано, што течи ули важной ды кеме чинь – минь тейтано семья!<br />
                     Мерить теть содамс марто минь весе кеместэ, улемс минь историясо ды максомс сехте кельме улыбкат.
@@ -1525,7 +1524,7 @@
         <!-- ===== МОКШАНСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-mdf">
             <div class="welcome-text">
-                <div class="greeting">Ялгат и родственнойть!</div>
+                <div class="greeting">Родственнойть и ялгат!</div>
                 <p class="message">
                     Минь содатама, што течи ули важной и кеме ши – минь тейтама семья!<br />
                     Мерить теть содамс мархта минь весе кеместэ, улемс минь историяса и максомс сехте кельме улыбкат.
@@ -1762,8 +1761,8 @@
             timer: { days: 'days', hours: 'hours', minutes: 'minutes' }
         },
         ar: {
-            groom: 'تاتيانا',
-            bride: 'صالح',
+            groom: 'تاتيانا',  // жених (по вашему желанию)
+            bride: 'صالح',    // невеста
             month: 'سبتمبر ٢٠٢٦',
             time: 'تجمع الضيوف الساعة ١٣:٠٠',
             title: 'دعوة زفاف',
