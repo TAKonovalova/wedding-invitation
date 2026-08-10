@@ -314,6 +314,14 @@
             display: block;
             line-height: 1.2;
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+            /* ----- УСТРАНЯЕМ МИГАНИЕ ----- */
+            font-variant-numeric: tabular-nums;
+            min-width: 2ch; /* фиксируем ширину для двух цифр */
+            display: inline-block;
+            will-change: contents; /* подсказка браузеру */
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .timer-item .label {
             font-size: 10px;
@@ -636,7 +644,7 @@
         /* ===== АРАБСКИЙ СТИЛЬ ===== */
         .lang-ar .invitation-title {
             font-family: 'Playfair Display', serif;
-            font-size: 48px; /* было 24, увеличен в 2 раза */
+            font-size: 48px;
             font-weight: 600;
             font-style: italic;
             color: #c9a87c;
@@ -644,10 +652,10 @@
             text-transform: none;
         }
         .lang-ar .title {
-            font-size: 26px; /* было 13, увеличен в 2 раза */
+            font-size: 26px;
         }
         .lang-ar .tl-title {
-            font-size: 26px; /* было 13, увеличен в 2 раза */
+            font-size: 26px;
         }
         .lang-ar .main-content {
             font-size: 1.3rem;
@@ -832,7 +840,7 @@
                 min-height: 350px !important;
             }
             .lang-ar .invitation-title {
-                font-size: 32px; /* адаптив */
+                font-size: 32px;
             }
             .lang-ar .title {
                 font-size: 18px;
