@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Свадебное приглашение — Салех & Татьяна</title>
-    <!-- Основные шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
         /* ----- БАЗА ----- */
         * {
@@ -347,29 +346,36 @@
         }
         .divider-deco .icon { color: #c9a87c; }
 
-        /* ----- ВВОДНЫЙ БЛОК (WELCOME) ----- */
+        /* ----- ВВОДНЫЙ БЛОК (WELCOME) — центрированный, изящный ----- */
         .welcome-text {
-            font-size: 16px;
-            line-height: 1.7;
+            text-align: center;
+            margin: 10px auto 25px;
+            padding: 5px 20px;
+            font-family: 'Playfair Display', serif;
             color: #5a4a3e;
-            text-align: left;
-            margin-bottom: 24px;
-            padding: 20px 24px;
-            background: #fcf8f5;
-            border-radius: 16px;
-            border-left: 5px solid #c9a87c;
-            box-shadow: 0 2px 10px rgba(140, 110, 90, 0.04);
-            font-family: 'Lora', serif;
         }
-        .welcome-text p {
-            margin-bottom: 10px;
-        }
-        .welcome-text p:last-child {
-            margin-bottom: 0;
-        }
-        .welcome-text strong {
-            color: #c9a87c;
+        .welcome-text .greeting {
+            font-size: 30px;
             font-weight: 600;
+            font-style: italic;
+            color: #c9a87c;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .welcome-text .message {
+            font-size: 18px;
+            line-height: 1.8;
+            font-family: 'Lora', serif;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #5a4a3e;
+        }
+        .welcome-text .ornament-line {
+            display: block;
+            font-size: 20px;
+            color: #c9b0a0;
+            letter-spacing: 6px;
+            margin: 8px 0 12px;
         }
 
         /* ----- ПРОГРАММА ----- */
@@ -799,6 +805,8 @@
             .divider-deco { font-size: 14px; gap: 12px; margin: 20px auto; }
             .divider-deco .line { width: 20px; }
             .program-intro, .welcome-text { font-size: 14px; padding: 14px 16px; }
+            .welcome-text .greeting { font-size: 24px; }
+            .welcome-text .message { font-size: 16px; }
             .color-swatches { gap: 10px 14px; }
             .color-swatch .circle { width: 36px; height: 36px; }
             .dresscode-block, .important-block, .rsvp-form-block { padding: 16px 16px 14px 16px; }
@@ -909,10 +917,16 @@
 
         <!-- ===== РУССКИЙ ===== -->
         <div class="lang-container" id="lang-ru">
-            <!-- Вводный блок -->
+            <!-- Вводный блок - центрированный, изящный -->
             <div class="welcome-text">
-                <p>Мы рады сообщить Вам, что состоится самое главное торжество в нашей жизни — день нашей свадьбы!</p>
-                <p>Приглашаем Вас разделить с нами радость этого незабываемого дня. <strong>Будем счастливы разделить этот день с Вами!</strong></p>
+                <span class="ornament-line">✧ ✦ ✧</span>
+                <div class="greeting">Дорогие друзья и родные!</div>
+                <p class="message">
+                    Мы рады сообщить вам, что в нашей жизни наступает самый важный и трогательный момент – мы создаём семью!<br />
+                    Приглашаем вас разделить с нами радость этого дня, стать частью нашей истории и подарить нам тепло своих улыбок.<br />
+                    Ваше присутствие сделает этот день по-настоящему незабываемым.
+                </p>
+                <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
                 <strong>Основное торжество для всех гостей состоится 18 сентября</strong> (программа дня раскрыта ниже).<br />
@@ -1047,8 +1061,14 @@
         <!-- ===== АНГЛИЙСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-en">
             <div class="welcome-text">
-                <p>We are delighted to announce the most important celebration of our lives — our wedding day!</p>
-                <p>We invite you to share the joy of this unforgettable day with us. <strong>We will be happy to share this day with you!</strong></p>
+                <span class="ornament-line">✧ ✦ ✧</span>
+                <div class="greeting">Dear friends and family!</div>
+                <p class="message">
+                    We are happy to announce that the most important and touching moment in our lives is coming – we are starting a family!<br />
+                    We invite you to share the joy of this day with us, to become part of our story and give us the warmth of your smiles.<br />
+                    Your presence will make this day truly unforgettable.
+                </p>
+                <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
                 <strong>The main celebration for all guests will take place on September 18</strong> (the day's program is below).<br />
@@ -1181,9 +1201,15 @@
 
         <!-- ===== АРАБСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-ar">
-            <div class="welcome-text" style="direction: rtl; text-align: right;">
-                <p>يسرنا أن نعلن لكم عن أهم احتفال في حياتنا — يوم زفافنا!</p>
-                <p>ندعوكم لمشاركتنا فرحة هذا اليوم الذي لا يُنسى. <strong>سنكون سعداء لمشاركة هذا اليوم معكم!</strong></p>
+            <div class="welcome-text" style="direction: rtl; text-align: center;">
+                <span class="ornament-line">✧ ✦ ✧</span>
+                <div class="greeting">أعزائي الأصدقاء والعائلة!</div>
+                <p class="message">
+                    يسعدنا أن نعلن لكم أن اللحظة الأهم والأكثر تأثيراً في حياتنا قد حانت – نحن نكوّن عائلة!<br />
+                    ندعوكم لمشاركتنا فرحة هذا اليوم، لتكونوا جزءاً من قصتنا وتمنحونا دفء ابتساماتكم.<br />
+                    حضوركم سيجعل هذا اليوم لا يُنسى حقاً.
+                </p>
+                <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro" style="direction: rtl; text-align: right;">
                 <strong>سيقام الاحتفال الرئيسي لجميع الضيوف في 18 سبتمبر</strong> (برنامج اليوم موضح أدناه).<br />
@@ -1316,10 +1342,15 @@
 
         <!-- ===== ЭРЗЯНСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-myv">
-            <!-- Вводный блок (перевод приблизительный, при необходимости замените на точный) -->
             <div class="welcome-text">
-                <p>Минь содатано, што течи ули покш чи — минь свадьбань чи!</p>
-                <p>Мерить теть содамс марто минь весе кеместэ. <strong>Минь вештемс содамс течи марто!</strong></p>
+                <span class="ornament-line">✧ ✦ ✧</span>
+                <div class="greeting">Ялгат ды родственнойть!</div>
+                <p class="message">
+                    Минь содатано, што течи ули сехте покш ды кеме чинь – минь тейтано семья!<br />
+                    Мерить теть содамс марто минь весе кеместэ, улемс минь историясо ды максомс сехте кельме улыбкат.<br />
+                    Тынь улемась тейсы те чить кеме ды содавикс.
+                </p>
+                <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
                 <strong>Весе ярсыцятнень туртов покш чиезэ 18 сентябрьсто</strong> (чинь программазо ало).<br />
@@ -1387,7 +1418,7 @@
                     </summary>
                     <div class="content">
                         <div class="desc-text">
-                            Одноклассниктнень марто уютной неформальной чи.
+                            Уютной неформальной чи ялгатнень марто.
                             <span class="addr">📍 Таркась карми явови</span>
                         </div>
                         <span style="font-size:13px; color:#b8a092; background:#ede3da; padding:5px 20px; border-radius:40px; display:inline-block; font-family:'Lora',serif;">
@@ -1452,10 +1483,15 @@
 
         <!-- ===== МОКШАНСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-mdf">
-            <!-- Вводный блок (перевод приблизительный) -->
             <div class="welcome-text">
-                <p>Минь содатама, што течи ули покш ши — минь свадьбань ши!</p>
-                <p>Мерить теть содамс мархта минь весе кеместэ. <strong>Минь вештемс содамс течи мархта!</strong></p>
+                <span class="ornament-line">✧ ✦ ✧</span>
+                <div class="greeting">Ялгат и родственнойть!</div>
+                <p class="message">
+                    Минь содатама, што течи ули сехте покш и кеме ши – минь тейтама семья!<br />
+                    Мерить теть содамс мархта минь весе кеместэ, улемс минь историяса и максомс сехте кельме улыбкат.<br />
+                    Тынь улемась тейсы те шить кеме и содавикс.
+                </p>
+                <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
                 <strong>Сембе сядасть туркс покш шись 18 сентябрьста</strong> (шинь программась алу).<br />
@@ -1523,7 +1559,7 @@
                     </summary>
                     <div class="content">
                         <div class="desc-text">
-                            Одноклассникнень мархта уютной неформальной ши.
+                            Уютной неформальной ши ялгатнень мархта.
                             <span class="addr">📍 Таркась кармай явови</span>
                         </div>
                         <span style="font-size:13px; color:#b8a092; background:#ede3da; padding:5px 20px; border-radius:40px; display:inline-block; font-family:'Lora',serif;">
