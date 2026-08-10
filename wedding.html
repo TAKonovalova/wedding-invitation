@@ -633,27 +633,32 @@
             font-family: 'Lora', serif;
         }
 
-        /* ===== АРАБСКИЙ СТИЛЬ (лаконичный, другой шрифт) ===== */
+        /* ===== АРАБСКИЙ СТИЛЬ ===== */
         .lang-ar .invitation-title {
-            font-family: 'Noto Naskh Arabic', serif;
-            font-size: 14px;
-            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 600;
+            font-style: italic;
+            color: #c9a87c;
+            letter-spacing: 1px;
+            text-transform: none;
         }
-        .lang-ar .names {
-            font-family: 'Noto Naskh Arabic', serif;
-            font-size: 44px;
-            letter-spacing: 2px;
+        .lang-ar .main-content {
+            font-size: 1.3rem;
         }
-        .lang-ar .names .ampersand {
-            font-family: 'Playfair Display', serif; /* оставляем амперсанд как есть */
+        /* сброс увеличения для шапки, имён и даты */
+        .lang-ar .hero-content,
+        .lang-ar .header-top,
+        .lang-ar .welcome-text .greeting,
+        .lang-ar .names-wrapper,
+        .lang-ar .date-wrapper,
+        .lang-ar .timer-wrapper {
+            font-size: 1rem;
         }
-        .lang-ar .names-wrapper {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        .lang-ar .date-block .month-year {
-            font-size: 18px;
-            letter-spacing: 3px;
+        /* дополнительное увеличение для некоторых элементов, если нужно */
+        .lang-ar .program-accordion details summary .day-title small,
+        .lang-ar .program-accordion details summary .badge {
+            font-size: 1.1rem;
         }
         .lang-ar .program-accordion details summary {
             font-family: 'Noto Naskh Arabic', serif;
@@ -666,7 +671,7 @@
         .lang-ar .dresscode-block p,
         .lang-ar .important-block p,
         .lang-ar .rsvp-form-block p {
-            font-family: 'Lora', serif; /* оставляем Lora для читаемости */
+            font-family: 'Lora', serif;
         }
         .lang-ar .map-link-small {
             font-family: 'Noto Naskh Arabic', serif;
@@ -815,6 +820,13 @@
             .rsvp-form-block iframe {
                 min-height: 350px !important;
             }
+            /* арабский адаптив */
+            .lang-ar .invitation-title {
+                font-size: 24px;
+            }
+            .lang-ar .main-content {
+                font-size: 1.1rem;
+            }
         }
         @media (max-width: 400px) {
             .names-wrapper { padding: 4px 10px; }
@@ -832,6 +844,12 @@
             .lang-tab { font-size: 10px; padding: 3px 10px; }
             .rsvp-form-block iframe {
                 min-height: 280px !important;
+            }
+            .lang-ar .invitation-title {
+                font-size: 20px;
+            }
+            .lang-ar .main-content {
+                font-size: 1rem;
             }
         }
 
@@ -912,13 +930,13 @@
 
         <div class="divider-deco">
             <span class="line"></span>
-            <span class="ornament-line">✧ ✦ ✧</span>
+            <span class="icon">✧ ✦ ✧</span>
             <span class="line"></span>
         </div>
 
         <!-- ===== РУССКИЙ ===== -->
         <div class="lang-container" id="lang-ru">
-            <!-- Вводный блок - центрированный, изящный -->
+            <!-- Вводный блок -->
             <div class="welcome-text">
                 <div class="greeting">Дорогие друзья и родные!</div>
                 <p class="message">
@@ -1041,7 +1059,7 @@
                 <p style="margin-top:14px;">❤️ Заранее благодарим за понимание и поддержку!</p>
             </div>
 
-            <!-- ===== ФОРМА RSVP (Яндекс Форма) — РУССКИЙ ===== -->
+            <!-- ===== ФОРМА RSVP ===== -->
             <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="rsvp-form-block">
@@ -1143,7 +1161,7 @@
                 </details>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="dresscode-block">
                 <div class="title">Dress code</div>
@@ -1166,7 +1184,7 @@
                 <p style="margin-top:12px;"><strong>September 19 (informal day):</strong> casual, comfortable everyday wear.</p>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="important-block">
                 <div class="title">With warm wishes</div>
@@ -1181,7 +1199,6 @@
                 <p style="margin-top:14px;">❤️ Thank you in advance for your understanding and support!</p>
             </div>
 
-            <!-- ===== ФОРМА RSVP — АНГЛИЙСКИЙ ===== -->
             <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="rsvp-form-block">
@@ -1282,7 +1299,7 @@
                 </details>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="dresscode-block" style="direction: rtl; text-align: right;">
                 <div class="title">قواعد اللباس</div>
@@ -1305,7 +1322,7 @@
                 <p style="margin-top:12px;"><strong>19 سبتمبر (يوم غير رسمي):</strong> ملابس مريحة يومية.</p>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="important-block" style="direction: rtl; text-align: right;">
                 <div class="title">مع أطيب التمنيات</div>
@@ -1320,7 +1337,6 @@
                 <p style="margin-top:14px;">❤️ نشكركم مسبقاً على تفهمكم ودعمكم!</p>
             </div>
 
-            <!-- ===== ФОРМА RSVP — АРАБСКИЙ ===== -->
             <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="rsvp-form-block" style="direction: rtl; text-align: right;">
@@ -1421,7 +1437,7 @@
                 </details>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="dresscode-block">
                 <div class="title">Дресс-код</div>
@@ -1444,7 +1460,7 @@
                 <p style="margin-top:12px;"><strong>19 сентября (неформальной чи):</strong> оймень стиль, комфортной повседневной одежда.</p>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="important-block">
                 <div class="title">Ёвкстнэнь марто</div>
@@ -1459,7 +1475,6 @@
                 <p style="margin-top:14px;">❤️ Заранее сюкпря содамост ды полавтомаст!</p>
             </div>
 
-            <!-- ===== ФОРМА RSVP — ЭРЗЯНСКИЙ ===== -->
             <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="rsvp-form-block">
@@ -1560,7 +1575,7 @@
                 </details>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✦ ⋆ ✦</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="dresscode-block">
                 <div class="title">Дресс-код</div>
@@ -1583,7 +1598,7 @@
                 <p style="margin-top:12px;"><strong>19 сентября (неформальной ши):</strong> оймень стиль, комфортной повседневной одежда.</p>
             </div>
 
-            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✧ ✧</span><span class="line"></span></div>
+            <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="important-block">
                 <div class="title">Ёвкстнень мархта</div>
@@ -1598,7 +1613,6 @@
                 <p style="margin-top:14px;">❤️ Заранее сюкпря содамост и полавтомаст!</p>
             </div>
 
-            <!-- ===== ФОРМА RSVP — МОКШАНСКИЙ ===== -->
             <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="rsvp-form-block">
