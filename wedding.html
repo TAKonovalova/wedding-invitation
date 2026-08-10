@@ -636,7 +636,7 @@
         /* ===== АРАБСКИЙ СТИЛЬ ===== */
         .lang-ar .invitation-title {
             font-family: 'Playfair Display', serif;
-            font-size: 30px;
+            font-size: 24px; /* уменьшили с 30 */
             font-weight: 600;
             font-style: italic;
             color: #c9a87c;
@@ -644,21 +644,32 @@
             text-transform: none;
         }
         .lang-ar .main-content {
-            font-size: 1.3rem;
+            font-size: 1.3rem; /* увеличиваем всё содержимое */
         }
-        /* сброс увеличения для шапки, имён и даты */
-        .lang-ar .hero-content,
-        .lang-ar .header-top,
-        .lang-ar .welcome-text .greeting,
-        .lang-ar .names-wrapper,
-        .lang-ar .date-wrapper,
-        .lang-ar .timer-wrapper {
+        .lang-ar .welcome-text {
+            font-size: 1rem; /* сбрасываем увеличение для блока приветствия */
+        }
+        /* остальные элементы наследуют увеличение от .main-content */
+        .lang-ar .program-accordion details summary .day-title small,
+        .lang-ar .program-accordion details summary .badge,
+        .lang-ar .map-link-small,
+        .lang-ar .timeline-inside .tl-item,
+        .lang-ar .desc-text,
+        .lang-ar .guest-note {
+            font-size: inherit; /* чтобы наследовали увеличение */
+        }
+        /* но для некоторых элементов задаём явно, чтобы они не сжимались */
+        .lang-ar .program-intro {
+            font-size: 1rem; /* наследует от .main-content, но если нужно, можно задать */
+        }
+        .lang-ar .dresscode-block p,
+        .lang-ar .important-block p,
+        .lang-ar .rsvp-form-block p {
             font-size: 1rem;
         }
-        /* дополнительное увеличение для некоторых элементов, если нужно */
-        .lang-ar .program-accordion details summary .day-title small,
-        .lang-ar .program-accordion details summary .badge {
-            font-size: 1.1rem;
+        /* для таймлайна и прочего */
+        .lang-ar .timeline-inside .tl-title {
+            font-size: 1rem;
         }
         .lang-ar .program-accordion details summary {
             font-family: 'Noto Naskh Arabic', serif;
@@ -822,10 +833,13 @@
             }
             /* арабский адаптив */
             .lang-ar .invitation-title {
-                font-size: 24px;
+                font-size: 20px;
             }
             .lang-ar .main-content {
                 font-size: 1.1rem;
+            }
+            .lang-ar .welcome-text .greeting {
+                font-size: 24px !important; /* сохраняем крупный размер */
             }
         }
         @media (max-width: 400px) {
@@ -846,10 +860,13 @@
                 min-height: 280px !important;
             }
             .lang-ar .invitation-title {
-                font-size: 20px;
+                font-size: 18px;
             }
             .lang-ar .main-content {
                 font-size: 1rem;
+            }
+            .lang-ar .welcome-text .greeting {
+                font-size: 20px !important;
             }
         }
 
@@ -936,7 +953,6 @@
 
         <!-- ===== РУССКИЙ ===== -->
         <div class="lang-container" id="lang-ru">
-            <!-- Вводный блок -->
             <div class="welcome-text">
                 <div class="greeting">Дорогие друзья и родные!</div>
                 <p class="message">
@@ -1059,13 +1075,11 @@
                 <p style="margin-top:14px;">❤️ Заранее благодарим за понимание и поддержку!</p>
             </div>
 
-            <!-- ===== ФОРМА RSVP ===== -->
             <div class="divider-deco"><span class="line"></span><span class="icon">✧ ✦ ✧</span><span class="line"></span></div>
 
             <div class="rsvp-form-block">
                 <div class="title">Быстрое подтверждение</div>
                 <p>Заполните форму, и мы будем знать, что вы с нами! 😊</p>
-
                 <iframe src="https://forms.yandex.ru/u/6a79c79d6d2d73c7e3ffb83d?iframe=1" 
                         frameborder="0" 
                         name="ya-form-6a79c79d6d2d73c7e3ffb83d" 
