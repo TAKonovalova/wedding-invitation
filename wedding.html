@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Свадебное приглашение — Салех & Татьяна</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <!-- Основные шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
         /* ----- БАЗА ----- */
         * {
@@ -35,14 +36,8 @@
             animation: fadeInUp 0.9s ease-out;
         }
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ----- ДВОЙНАЯ ЗОЛОТАЯ РАМКА ----- */
@@ -150,6 +145,7 @@
             color: #b8956a;
             font-weight: 400;
             font-family: 'Playfair Display', serif;
+            transition: font-family 0.3s, font-size 0.3s;
         }
 
         /* ===== БЛОК-ПОДЛОЖКА С КАРУСЕЛЬЮ ===== */
@@ -231,6 +227,7 @@
             line-height: 1.1;
             font-family: 'Playfair Display', serif;
             text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            transition: font-size 0.3s, font-family 0.3s;
         }
         .names span { display: inline-block; }
         .ampersand {
@@ -349,6 +346,31 @@
             background: linear-gradient(to right, transparent, #dccfc6, transparent);
         }
         .divider-deco .icon { color: #c9a87c; }
+
+        /* ----- ВВОДНЫЙ БЛОК (WELCOME) ----- */
+        .welcome-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5a4a3e;
+            text-align: left;
+            margin-bottom: 24px;
+            padding: 20px 24px;
+            background: #fcf8f5;
+            border-radius: 16px;
+            border-left: 5px solid #c9a87c;
+            box-shadow: 0 2px 10px rgba(140, 110, 90, 0.04);
+            font-family: 'Lora', serif;
+        }
+        .welcome-text p {
+            margin-bottom: 10px;
+        }
+        .welcome-text p:last-child {
+            margin-bottom: 0;
+        }
+        .welcome-text strong {
+            color: #c9a87c;
+            font-weight: 600;
+        }
 
         /* ----- ПРОГРАММА ----- */
         .program-intro {
@@ -604,7 +626,46 @@
             font-family: 'Lora', serif;
         }
 
-        /* ----- ЯЗЫКОВЫЕ КОНТЕЙНЕРЫ ----- */
+        /* ===== АРАБСКИЙ СТИЛЬ (лаконичный, другой шрифт) ===== */
+        .lang-ar .invitation-title {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        .lang-ar .names {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 44px;
+            letter-spacing: 2px;
+        }
+        .lang-ar .names .ampersand {
+            font-family: 'Playfair Display', serif; /* оставляем амперсанд как есть */
+        }
+        .lang-ar .names-wrapper {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .lang-ar .date-block .month-year {
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+        .lang-ar .program-accordion details summary {
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+        .lang-ar .program-accordion details summary .day-title small {
+            font-family: 'Lora', serif;
+        }
+        .lang-ar .welcome-text,
+        .lang-ar .program-intro,
+        .lang-ar .dresscode-block p,
+        .lang-ar .important-block p,
+        .lang-ar .rsvp-form-block p {
+            font-family: 'Lora', serif; /* оставляем Lora для читаемости */
+        }
+        .lang-ar .map-link-small {
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+
+        /* ===== ЯЗЫКОВЫЕ КОНТЕЙНЕРЫ ===== */
         .lang-container {
             display: block;
         }
@@ -720,6 +781,7 @@
             .hero-content { padding: 18px 16px 14px 16px; }
             .names-wrapper { padding: 8px 16px; }
             .names { font-size: 36px; }
+            .lang-ar .names { font-size: 32px; }
             .ampersand { font-size: 28px; margin: 0 8px; }
             .date-wrapper { padding: 10px 16px 12px 16px; }
             .date-block .day { font-size: 48px; }
@@ -736,7 +798,7 @@
             .timeline-inside .tl-item .tl-time { min-width: 45px; font-size: 14px; }
             .divider-deco { font-size: 14px; gap: 12px; margin: 20px auto; }
             .divider-deco .line { width: 20px; }
-            .program-intro { font-size: 14px; padding: 14px 16px; }
+            .program-intro, .welcome-text { font-size: 14px; padding: 14px 16px; }
             .color-swatches { gap: 10px 14px; }
             .color-swatch .circle { width: 36px; height: 36px; }
             .dresscode-block, .important-block, .rsvp-form-block { padding: 16px 16px 14px 16px; }
@@ -748,6 +810,7 @@
         @media (max-width: 400px) {
             .names-wrapper { padding: 4px 10px; }
             .names { font-size: 28px; }
+            .lang-ar .names { font-size: 24px; }
             .hero-content { padding: 14px 10px 10px 10px; }
             .date-wrapper { padding: 8px 12px 10px 12px; }
             .date-block .day { font-size: 38px; }
@@ -763,7 +826,7 @@
             }
         }
 
-        /* ===== УВЕЛИЧИВАЕМ БЛОК С ФОРМОЙ НА 20% (было 440, стало 530) ===== */
+        /* ===== УВЕЛИЧИВАЕМ БЛОК С ФОРМОЙ ===== */
         .rsvp-form-block iframe {
             min-height: 450px; 
             border: none;
@@ -787,7 +850,7 @@
     <!-- ===== ОРНАМЕНТ И ЗАГОЛОВОК ===== -->
     <div class="header-top">
         <div class="ornament">✧ ✦ ✧</div>
-        <div class="invitation-title" data-lang-title>Свадебное приглашение</div>
+        <div class="invitation-title" id="titleText">Свадебное приглашение</div>
     </div>
 
     <!-- ===== БЛОК-ПОДЛОЖКА С КАРУСЕЛЬЮ ===== -->
@@ -804,31 +867,31 @@
         <div class="hero-content">
             <div class="names-wrapper">
                 <div class="names">
-                    <span>Салех</span>
+                    <span id="groomName">Салех</span>
                     <span class="ampersand">&</span>
-                    <span>Татьяна</span>
+                    <span id="brideName">Татьяна</span>
                 </div>
             </div>
             <div class="date-wrapper">
                 <div class="date-block">
                     <span class="day">18</span>
-                    <span class="month-year" data-lang-month>Сентября 2026</span>
-                    <span class="time-tag" data-lang-time>Сбор гостей в 13:00</span>
+                    <span class="month-year" id="monthText">Сентября 2026</span>
+                    <span class="time-tag" id="timeText">Сбор гостей в 13:00</span>
                 </div>
             </div>
             <div class="timer-wrapper">
                 <div class="timer-grid">
                     <div class="timer-item">
                         <span class="num" id="days">00</span>
-                        <span class="label" data-lang-timer-days>дней</span>
+                        <span class="label" id="timerDays">дней</span>
                     </div>
                     <div class="timer-item">
                         <span class="num" id="hours">00</span>
-                        <span class="label" data-lang-timer-hours>часов</span>
+                        <span class="label" id="timerHours">часов</span>
                     </div>
                     <div class="timer-item">
                         <span class="num" id="minutes">00</span>
-                        <span class="label" data-lang-timer-minutes>минут</span>
+                        <span class="label" id="timerMinutes">минут</span>
                     </div>
                 </div>
             </div>
@@ -846,6 +909,11 @@
 
         <!-- ===== РУССКИЙ ===== -->
         <div class="lang-container" id="lang-ru">
+            <!-- Вводный блок -->
+            <div class="welcome-text">
+                <p>Мы рады сообщить Вам, что состоится самое главное торжество в нашей жизни — день нашей свадьбы!</p>
+                <p>Приглашаем Вас разделить с нами радость этого незабываемого дня. <strong>Будем счастливы разделить этот день с Вами!</strong></p>
+            </div>
             <div class="program-intro">
                 <strong>Основное торжество для всех гостей состоится 18 сентября</strong> (программа дня раскрыта ниже).<br />
                 Также мы приглашаем самых близких родственников и друзей присоединиться к нам <strong>17 сентября</strong> на церемонию в ЗАГСе.<br />
@@ -896,7 +964,7 @@
                             <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-event"><span class="highlight">Завершение вечера</span></span></div>
                         </div>
                         <div style="margin-top: 18px;">
-                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Открыть карту ресторана</a>
+                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Открыть карту</a>
                         </div>
                     </div>
                 </details>
@@ -951,7 +1019,7 @@
                 <div class="title">С пожеланиями</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Вместо цветов</strong> — ваше присутствие — лучший подарок. Если вы хотите нас порадовать, мы будем очень благодарны за финансовую поддержку, которая поможет нам воплотить наши планы. Просим вас не дарить цветы — мы ценим ваше внимание и заботу.</div>
+                    <div><strong>Ваше присутствие — лучший подарок.</strong> Если вы хотите нас порадовать, мы будем очень благодарны за небольшой финансовый вклад — он поможет нам приблизиться к нашей мечте. Просим вас не дарить цветы: мы ценим ваше внимание и заботу.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -978,6 +1046,10 @@
 
         <!-- ===== АНГЛИЙСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-en">
+            <div class="welcome-text">
+                <p>We are delighted to announce the most important celebration of our lives — our wedding day!</p>
+                <p>We invite you to share the joy of this unforgettable day with us. <strong>We will be happy to share this day with you!</strong></p>
+            </div>
             <div class="program-intro">
                 <strong>The main celebration for all guests will take place on September 18</strong> (the day's program is below).<br />
                 We also invite our closest relatives and friends to join us <strong>on September 17</strong> for the ceremony at the Wedding Palace.<br />
@@ -1028,7 +1100,7 @@
                             <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-event"><span class="highlight">Evening conclusion</span></span></div>
                         </div>
                         <div style="margin-top: 18px;">
-                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Open restaurant map</a>
+                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Open map</a>
                         </div>
                     </div>
                 </details>
@@ -1083,7 +1155,7 @@
                 <div class="title">With warm wishes</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Instead of flowers</strong> — your presence is the best gift. If you wish to give us something, we would be very grateful for financial support to help us realize our plans. Please don't give flowers — we appreciate your attention and care.</div>
+                    <div><strong>Your presence is the best gift.</strong> If you wish to give us something, we would be very grateful for a small financial contribution — it will help us get closer to our dream. Please don't give flowers: we appreciate your attention and care.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1109,6 +1181,10 @@
 
         <!-- ===== АРАБСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-ar">
+            <div class="welcome-text" style="direction: rtl; text-align: right;">
+                <p>يسرنا أن نعلن لكم عن أهم احتفال في حياتنا — يوم زفافنا!</p>
+                <p>ندعوكم لمشاركتنا فرحة هذا اليوم الذي لا يُنسى. <strong>سنكون سعداء لمشاركة هذا اليوم معكم!</strong></p>
+            </div>
             <div class="program-intro" style="direction: rtl; text-align: right;">
                 <strong>سيقام الاحتفال الرئيسي لجميع الضيوف في 18 سبتمبر</strong> (برنامج اليوم موضح أدناه).<br />
                 كما ندعو أقرب الأقارب والأصدقاء للانضمام إلينا <strong>في 17 سبتمبر</strong> لحفل في قصر الزفاف.<br />
@@ -1159,7 +1235,7 @@
                             <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-event"><span class="highlight">اختتام المساء</span></span></div>
                         </div>
                         <div style="margin-top: 18px;">
-                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">فتح خريطة المطعم</a>
+                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">فتح الخريطة</a>
                         </div>
                     </div>
                 </details>
@@ -1214,7 +1290,7 @@
                 <div class="title">مع أطيب التمنيات</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>بدلاً من الزهور</strong> — حضوركم هو أفضل هدية. إذا كنتم ترغبون في إسعادنا، سنكون ممتنين جداً للدعم المالي الذي سيساعدنا في تحقيق خططنا. نرجو منكم عدم إهداء الزهور — نقدر اهتمامكم ورعايتكم.</div>
+                    <div><strong>حضوركم هو أفضل هدية.</strong> إذا كنتم ترغبون في إسعادنا، سنكون ممتنين جداً لمساهمة مالية بسيطة — فهي ستساعدنا على الاقتراب من حلمنا. نرجو منكم عدم إهداء الزهور: نقدر اهتمامكم ورعايتكم.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1240,6 +1316,11 @@
 
         <!-- ===== ЭРЗЯНСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-myv">
+            <!-- Вводный блок (перевод приблизительный, при необходимости замените на точный) -->
+            <div class="welcome-text">
+                <p>Минь содатано, што течи ули покш чи — минь свадьбань чи!</p>
+                <p>Мерить теть содамс марто минь весе кеместэ. <strong>Минь вештемс содамс течи марто!</strong></p>
+            </div>
             <div class="program-intro">
                 <strong>Весе ярсыцятнень туртов покш чиезэ 18 сентябрьсто</strong> (чинь программазо ало).<br />
                 Мерить илядемс икеле <strong>17 сентябрьсто</strong> вечкемань родственниктнэнь ды оймсетьнень ЗАГС-со.<br />
@@ -1290,7 +1371,7 @@
                             <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-event"><span class="highlight">Чинь прядовома</span></span></div>
                         </div>
                         <div style="margin-top: 18px;">
-                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Ресторань картась</a>
+                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Картань панжома</a>
                         </div>
                     </div>
                 </details>
@@ -1345,7 +1426,7 @@
                 <div class="title">Ёвкстнэнь марто</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Цветтнень эйстэ</strong> — тынь улицякс — паро подарок. Кие мери максомс подарок, минь сюкпрянь пешксе карматано финансовой полавтомаст туртов. Вешемс а максомс цветт — минь содатано эсь мелень ды вечкемань.</div>
+                    <div><strong>Тынь улицякс — сяда паро подарок.</strong> Кие сядасть максомс подарок, минь сядасть сюкпрянянь полавтома финансовой полавтомаст туркс, што кармай маштомс максомс мезень сяда паро. Вешемс аф максомс цветт — минь содатама эсь мельть и вечкемать.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1371,6 +1452,11 @@
 
         <!-- ===== МОКШАНСКИЙ ===== -->
         <div class="lang-container hidden" id="lang-mdf">
+            <!-- Вводный блок (перевод приблизительный) -->
+            <div class="welcome-text">
+                <p>Минь содатама, што течи ули покш ши — минь свадьбань ши!</p>
+                <p>Мерить теть содамс мархта минь весе кеместэ. <strong>Минь вештемс содамс течи мархта!</strong></p>
+            </div>
             <div class="program-intro">
                 <strong>Сембе сядасть туркс покш шись 18 сентябрьста</strong> (шинь программась алу).<br />
                 Минь сядасть сявомс малакс родственникнень и оймсетнень <strong>17 сентябрьста</strong> ЗАГС-с.<br />
@@ -1421,7 +1507,7 @@
                             <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-event"><span class="highlight">Шинь прядовома</span></span></div>
                         </div>
                         <div style="margin-top: 18px;">
-                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Ресторань картась</a>
+                            <a href="https://yandex.ru/maps/org/khurma/194070438006/?ll=45.181548%2C54.186419&z=6" target="_blank" class="map-link-small">Картань панжома</a>
                         </div>
                     </div>
                 </details>
@@ -1476,7 +1562,7 @@
                 <div class="title">Ёвкстнень мархта</div>
                 <div style="display:flex; gap:12px; margin-bottom:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">🌿</span>
-                    <div><strong>Цветтнень эйста</strong> — тынь улицякс — сяда паро подарок. Кие сядасть максомс подарок, минь сядасть сюкпрянянь полавтома финансовой полавтомаст туркс. Вешемс аф максомс цветт — минь содатама эсь мельть и вечкемать.</div>
+                    <div><strong>Тынь улицякс — сяда паро подарок.</strong> Кие сядасть максомс подарок, минь сядасть сюкпрянянь полавтома финансовой полавтомаст туркс, што кармай маштомс максомс мезень сяда паро. Вешемс аф максомс цветт — минь содатама эсь мельть и вечкемать.</div>
                 </div>
                 <div style="display:flex; gap:12px; align-items:flex-start;">
                     <span style="font-size:22px; color:#c9a87c;">👶</span>
@@ -1554,38 +1640,85 @@
         mdf: document.getElementById('lang-mdf')
     };
 
-    const monthEl = document.querySelector('[data-lang-month]');
-    const timeEl = document.querySelector('[data-lang-time]');
-    const titleEl = document.querySelector('[data-lang-title]');
-    const timerLabels = {
-        days: document.querySelector('[data-lang-timer-days]'),
-        hours: document.querySelector('[data-lang-timer-hours]'),
-        minutes: document.querySelector('[data-lang-timer-minutes]')
-    };
+    // Элементы для динамических текстов
+    const groomEl = document.getElementById('groomName');
+    const brideEl = document.getElementById('brideName');
+    const monthEl = document.getElementById('monthText');
+    const timeEl = document.getElementById('timeText');
+    const titleEl = document.getElementById('titleText');
+    const timerDays = document.getElementById('timerDays');
+    const timerHours = document.getElementById('timerHours');
+    const timerMinutes = document.getElementById('timerMinutes');
+    const mainCard = document.querySelector('.invitation-card'); // для добавления класса языка
 
     const translations = {
-        ru: { month: 'Сентября 2026', time: 'Сбор гостей в 13:00', title: 'Свадебное приглашение', timer: { days: 'дней', hours: 'часов', minutes: 'минут' } },
-        en: { month: 'September 2026', time: 'Guest gathering at 13:00', title: 'Wedding invitation', timer: { days: 'days', hours: 'hours', minutes: 'minutes' } },
-        ar: { month: 'سبتمبر 2026', time: 'تجمع الضيوف الساعة 13:00', title: 'دعوة زفاف', timer: { days: 'أيام', hours: 'ساعات', minutes: 'دقائق' } },
-        myv: { month: 'Сентябрь 2026', time: 'Ярсыцятнень вачкодема 13:00', title: 'Свадьбань приглашения', timer: { days: 'чить', hours: 'часть', minutes: 'минут' } },
-        mdf: { month: 'Сентябрь 2026', time: 'Сядасть ванома 13:00', title: 'Свадьбань приглашения', timer: { days: 'шить', hours: 'часть', minutes: 'минут' } }
+        ru: {
+            groom: 'Салех',
+            bride: 'Татьяна',
+            month: 'Сентября 2026',
+            time: 'Сбор гостей в 13:00',
+            title: 'Свадебное приглашение',
+            timer: { days: 'дней', hours: 'часов', minutes: 'минут' }
+        },
+        en: {
+            groom: 'Saleh',
+            bride: 'Tatiana',
+            month: 'September 2026',
+            time: 'Guest gathering at 13:00',
+            title: 'Wedding invitation',
+            timer: { days: 'days', hours: 'hours', minutes: 'minutes' }
+        },
+        ar: {
+            groom: 'صالح',
+            bride: 'تاتيانا',
+            month: 'سبتمبر 2026',
+            time: 'تجمع الضيوف الساعة 13:00',
+            title: 'دعوة زفاف',
+            timer: { days: 'أيام', hours: 'ساعات', minutes: 'دقائق' }
+        },
+        myv: {
+            groom: 'Салех',
+            bride: 'Татьяна',
+            month: 'Сентябрь 2026',
+            time: 'Ярсыцятнень вачкодема 13:00',
+            title: 'Свадьбань приглашения',
+            timer: { days: 'чить', hours: 'часть', minutes: 'минут' }
+        },
+        mdf: {
+            groom: 'Салех',
+            bride: 'Татьяна',
+            month: 'Сентябрь 2026',
+            time: 'Сядасть ванома 13:00',
+            title: 'Свадьбань приглашения',
+            timer: { days: 'шить', hours: 'часть', minutes: 'минут' }
+        }
     };
 
     function setLanguage(lang) {
+        // Скрыть/показать контейнеры
         for (var key in containers) {
             containers[key].classList.toggle('hidden', key !== lang);
         }
+        // Активная вкладка
         langTabs.forEach(function(tab) {
             tab.classList.toggle('active', tab.dataset.lang === lang);
         });
+        // Обновить текст
         var t = translations[lang];
         if (t) {
+            groomEl.textContent = t.groom;
+            brideEl.textContent = t.bride;
             monthEl.textContent = t.month;
             timeEl.textContent = t.time;
             titleEl.textContent = t.title;
-            timerLabels.days.textContent = t.timer.days;
-            timerLabels.hours.textContent = t.timer.hours;
-            timerLabels.minutes.textContent = t.timer.minutes;
+            timerDays.textContent = t.timer.days;
+            timerHours.textContent = t.timer.hours;
+            timerMinutes.textContent = t.timer.minutes;
+        }
+        // Добавляем класс для арабского стиля
+        mainCard.classList.remove('lang-ar');
+        if (lang === 'ar') {
+            mainCard.classList.add('lang-ar');
         }
     }
 
