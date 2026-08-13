@@ -305,7 +305,7 @@
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.1);
             min-width: 60px;
-            will-change: transform; /* стабилизация при перерисовке */
+            will-change: transform;
         }
         .timer-item .num {
             font-family: 'Playfair Display', serif;
@@ -315,7 +315,7 @@
             line-height: 1.2;
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
             font-variant-numeric: tabular-nums;
-            min-width: 2.2ch;          /* фиксированная ширина под две цифры */
+            min-width: 2.2ch;
             display: inline-block;
             text-align: center;
             will-change: contents;
@@ -383,6 +383,13 @@
             max-width: 600px;
             margin: 0 auto;
             color: #5a4a3e;
+        }
+        .welcome-image {
+            max-width: 100%;
+            border-radius: 16px;
+            margin: 16px 0;
+            display: block;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
         .welcome-text .ornament-line {
             display: block;
@@ -837,6 +844,7 @@
             .program-intro, .welcome-text { font-size: 14px; padding: 14px 16px; }
             .welcome-text .greeting { font-size: 24px; }
             .welcome-text .message { font-size: 16px; }
+            .welcome-image { margin: 12px 0; border-radius: 12px; }
             .color-swatches { gap: 10px 14px; }
             .color-swatch .circle { width: 36px; height: 36px; }
             .dresscode-block, .important-block, .rsvp-form-block { padding: 16px 16px 14px 16px; }
@@ -983,6 +991,7 @@
                     Мы рады сообщить вам, что в нашей жизни наступает важный и трогательный момент – мы создаём семью!<br />
                     Приглашаем вас разделить с нами радость этого дня, стать частью нашей истории и подарить нам тепло своих улыбок.
                 </p>
+                <img src="cat5.jpg" alt="Наше фото" class="welcome-image" />
                 <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
@@ -1121,6 +1130,7 @@
                     We are happy to announce that an important and touching moment is coming in our lives – we are starting a family!<br />
                     We invite you to share the joy of this day with us, to become part of our story and give us the warmth of your smiles.
                 </p>
+                <img src="cat6.jpg" alt="Our photo" class="welcome-image" />
                 <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
@@ -1259,6 +1269,7 @@
                     يسعدنا أن نعلن لكم أن لحظة مهمة ومؤثرة قد حانت في حياتنا – نحن نكوّن عائلة!<br />
                     ندعوكم لمشاركتنا فرحة هذا اليوم، لتكونوا جزءاً من قصتنا وتمنحونا دفء ابتساماتكم.
                 </p>
+                <img src="cat7.jpg" alt="صورتنا" class="welcome-image" />
                 <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro" style="direction: rtl; text-align: right;">
@@ -1397,6 +1408,7 @@
                     Минь содатано, што течи ули важной ды кеме чинь – минь тейтано семья!<br />
                     Мерить теть содамс марто минь весе кеместэ, улемс минь историясо ды максомс сехте кельме улыбкат.
                 </p>
+                <img src="cat8.jpg" alt="Минек фото" class="welcome-image" />
                 <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
@@ -1535,6 +1547,7 @@
                     Минь содатама, што течи ули важной и кеме ши – минь тейтама семья!<br />
                     Мерить теть содамс мархта минь весе кеместэ, улемс минь историяса и максомс сехте кельме улыбкат.
                 </p>
+                <img src="cat9.jpg" alt="Минь фото" class="welcome-image" />
                 <span class="ornament-line">✧ ✦ ✧</span>
             </div>
             <div class="program-intro">
