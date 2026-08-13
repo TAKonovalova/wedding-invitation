@@ -329,6 +329,11 @@
             color: rgba(255,255,255,0.7);
         }
 
+        /* ===== АРАБСКИЙ: обратный порядок в таймере ===== */
+        .lang-ar .timer-grid {
+            flex-direction: row-reverse;
+        }
+
         /* ===== ОСТАЛЬНОЙ КОНТЕНТ ===== */
         .main-content {
             position: relative;
@@ -981,7 +986,7 @@
             </div>
             <div class="program-intro">
                 <strong>Основное торжество для всех гостей состоится 18 сентября</strong> (программа дня раскрыта ниже).<br />
-                Также мы приглашаем самых близких родственников и друзей присоединиться к нам <strong>17 сентября</strong> на церемонию в ЗАГСе.<br />
+                Также мы приглашаем присоединиться к нам <strong>17 сентября</strong> на церемонию в ЗАГСе.<br />
                 <span style="color:#c9a87c;">▼</span> Детали каждого дня — в раскрывающихся блоках.
             </div>
             <div class="program-accordion">
@@ -1119,7 +1124,7 @@
             </div>
             <div class="program-intro">
                 <strong>The main celebration for all guests will take place on September 18</strong> (the day's program is below).<br />
-                We also invite our closest relatives and friends to join us <strong>on September 17</strong> for the ceremony at the Wedding Palace.<br />
+                We also invite you to join us <strong>on September 17</strong> for the ceremony at the Wedding Palace.<br />
                 <span style="color:#c9a87c;">▼</span> Details for each day are in the expandable sections.
             </div>
             <div class="program-accordion">
@@ -1257,7 +1262,7 @@
             </div>
             <div class="program-intro" style="direction: rtl; text-align: right;">
                 <strong>سيقام الاحتفال الرئيسي لجميع الضيوف في ١٨ سبتمبر</strong> (برنامج اليوم موضح أدناه).<br />
-                كما ندعو أقرب الأقارب والأصدقاء للانضمام إلينا <strong>في ١٧ سبتمبر</strong> لحفل في قصر الزفاف.<br />
+                كما ندعوكم للانضمام إلينا <strong>في ١٧ سبتمبر</strong> لحفل في قصر الزفاف.<br />
                 <span style="color:#c9a87c;">▼</span> تفاصيل كل يوم في الأقسام القابلة للتوسيع.
             </div>
             <div class="program-accordion">
@@ -1395,7 +1400,7 @@
             </div>
             <div class="program-intro">
                 <strong>Весе ярсыцятнень туртов покш чиезэ 18 сентябрьсто</strong> (чинь программазо ало).<br />
-                Мерить илядемс икеле <strong>17 сентябрьсто</strong> вечкемань родственниктнэнь ды оймсетьнень ЗАГС-со.<br />
+                Мерить илядемс икеле <strong>17 сентябрьсто</strong> ЗАГС-со.<br />
                 <span style="color:#c9a87c;">▼</span> Чиень ваномкатне — пачкодема пелькстнесэ.
             </div>
             <div class="program-accordion">
@@ -1533,7 +1538,7 @@
             </div>
             <div class="program-intro">
                 <strong>Сембе сядасть туркс покш шись 18 сентябрьста</strong> (шинь программась алу).<br />
-                Минь сядасть сявомс малакс родственникнень и оймсетнень <strong>17 сентябрьста</strong> ЗАГС-с.<br />
+                Минь сядасть сявомс <strong>17 сентябрьста</strong> ЗАГС-с.<br />
                 <span style="color:#c9a87c;">▼</span> Шинь ваномкатне — пачкодема пелькстнеса.
             </div>
             <div class="program-accordion">
@@ -1761,8 +1766,8 @@
             timer: { days: 'days', hours: 'hours', minutes: 'minutes' }
         },
         ar: {
-            groom: 'تاتيانا',  // жених (по вашему желанию)
-            bride: 'صالح',    // невеста
+            groom: 'تاتيانا',
+            bride: 'صالح',
             month: 'سبتمبر ٢٠٢٦',
             time: 'تجمع الضيوف الساعة ١٣:٠٠',
             title: 'دعوة زفاف',
