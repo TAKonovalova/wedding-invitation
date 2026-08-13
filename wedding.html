@@ -305,18 +305,19 @@
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.1);
             min-width: 60px;
+            will-change: transform; /* стабилизация при перерисовке */
         }
         .timer-item .num {
             font-family: 'Playfair Display', serif;
             font-size: 28px;
             font-weight: 600;
             color: #c9a87c;
-            display: block;
             line-height: 1.2;
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
             font-variant-numeric: tabular-nums;
-            min-width: 2ch;
+            min-width: 2.2ch;          /* фиксированная ширина под две цифры */
             display: inline-block;
+            text-align: center;
             will-change: contents;
             backface-visibility: hidden;
             -webkit-font-smoothing: antialiased;
@@ -1686,7 +1687,8 @@
     }
 
     // ---------- ТАЙМЕР (только дни, часы, минуты) ----------
-    let currentLang = 'ru'; // текущий язык
+    let currentLang = 'ru';
+    let prevDays = '', prevHours = '', prevMinutes = '';
 
     function updateTimer() {
         const target = new Date('2026-09-18T13:00:00+03:00').getTime();
@@ -1697,15 +1699,29 @@
         let hours = String(Math.floor((diff / (1000*60*60)) % 24)).padStart(2, '0');
         let minutes = String(Math.floor((diff / (1000*60)) % 60)).padStart(2, '0');
 
+        // Применяем арабские цифры, если нужно
+        let displayDays = days, displayHours = hours, displayMinutes = minutes;
         if (currentLang === 'ar') {
-            days = toArabicDigits(days);
-            hours = toArabicDigits(hours);
-            minutes = toArabicDigits(minutes);
+            displayDays = toArabicDigits(days);
+            displayHours = toArabicDigits(hours);
+            displayMinutes = toArabicDigits(minutes);
         }
-        document.getElementById('days').textContent = days;
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
+
+        // Обновляем только если изменилось
+        if (displayDays !== prevDays) {
+            document.getElementById('days').textContent = displayDays;
+            prevDays = displayDays;
+        }
+        if (displayHours !== prevHours) {
+            document.getElementById('hours').textContent = displayHours;
+            prevHours = displayHours;
+        }
+        if (displayMinutes !== prevMinutes) {
+            document.getElementById('minutes').textContent = displayMinutes;
+            prevMinutes = displayMinutes;
+        }
     }
+
     updateTimer();
     setInterval(updateTimer, 1000);
 
@@ -1820,6 +1836,8 @@
             dayNumber.textContent = '18';
         }
         // Обновить таймер с учётом текущего языка
+        // Сбросим сохранённые значения, чтобы принудительно обновить при смене языка
+        prevDays = prevHours = prevMinutes = '';
         updateTimer();
         // Добавляем класс для арабского стиля
         mainCard.classList.remove('lang-ar');
