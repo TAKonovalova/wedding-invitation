@@ -872,9 +872,20 @@
             .color-swatch .circle { width: 36px; height: 36px; }
             .dresscode-block, .important-block, .rsvp-form-block { padding: 16px 16px 14px 16px; }
             .dresscode-block p, .important-block p, .rsvp-form-block p { font-size: 14px; }
-            .rsvp-form-block iframe {
-                min-height: 350px !important;
+
+            /* ----- ИЗМЕНЕНИЯ ДЛЯ ФОРМЫ НА МОБИЛЬНЫХ ----- */
+            .rsvp-form-block {
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+                max-height: 80vh;
             }
+            .rsvp-form-block iframe {
+                height: 700px; /* фиксированная высота, чтобы вместить всю форму */
+                width: 100%;
+                border: none;
+                display: block;
+            }
+
             .lang-ar .invitation-title {
                 font-size: 32px;
             }
@@ -905,8 +916,9 @@
             .color-swatch .circle { width: 30px; height: 30px; }
             .color-swatch .label { font-size: 10px; }
             .lang-tab { font-size: 10px; padding: 3px 10px; }
+            /* ----- ИЗМЕНЕНИЯ ДЛЯ ФОРМЫ НА САМЫХ МАЛЕНЬКИХ ЭКРАНАХ ----- */
             .rsvp-form-block iframe {
-                min-height: 280px !important;
+                height: 600px; /* чуть меньше, но всё ещё достаточно */
             }
             .lang-ar .invitation-title {
                 font-size: 24px;
@@ -925,12 +937,19 @@
             }
         }
 
-        /* ===== УВЕЛИЧИВАЕМ БЛОК С ФОРМОЙ ===== */
-        .rsvp-form-block iframe {
-            min-height: 450px; 
-            border: none;
-            width: 100%;
+        /* ===== БАЗОВЫЕ СТИЛИ ДЛЯ ФОРМЫ (не мобильные) ===== */
+        .rsvp-form-block {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            max-height: 90vh;
         }
+        .rsvp-form-block iframe {
+            height: 750px; /* достаточно для полной формы */
+            width: 100%;
+            border: none;
+            display: block;
+        }
+
     </style>
 </head>
 <body>
@@ -1113,7 +1132,7 @@
                         frameborder="0" 
                         name="ya-form-6a79c79d6d2d73c7e3ffb83d" 
                         width="100%" 
-                        style="min-height: 440px; border: none;">
+                        style="border: none;">
                 </iframe>
             </div>
         </div>
@@ -1225,7 +1244,7 @@
                         frameborder="0" 
                         name="ya-form-6a79c8ca84227c859c96739c" 
                         width="100%" 
-                        style="min-height: 440px; border: none;">
+                        style="border: none;">
                 </iframe>
             </div>
         </div>
@@ -1337,7 +1356,7 @@
                         frameborder="0" 
                         name="ya-form-6a79c9f102848f99b20e725f" 
                         width="100%" 
-                        style="min-height: 440px; border: none;">
+                        style="border: none;">
                 </iframe>
             </div>
         </div>
@@ -1449,7 +1468,7 @@
                         frameborder="0" 
                         name="ya-form-6a79cc27e010db99352c0bcd" 
                         width="100%" 
-                        style="min-height: 440px; border: none;">
+                        style="border: none;">
                 </iframe>
             </div>
         </div>
@@ -1561,7 +1580,7 @@
                         frameborder="0" 
                         name="ya-form-6a79cb3802848f99b20e729e" 
                         width="100%" 
-                        style="min-height: 440px; border: none;">
+                        style="border: none;">
                 </iframe>
             </div>
         </div>
