@@ -198,12 +198,12 @@
         }
         .hero-bg-slides {
             display: flex;
-            width: 400%;
+            width: 500%; /* 5 слайдов */
             height: 100%;
             transition: transform 0.8s ease;
         }
         .hero-bg-slide {
-            width: 25%;
+            width: 20%; /* 100% / 5 */
             height: 100%;
             flex-shrink: 0;
         }
@@ -655,7 +655,7 @@
         }
         .color-swatch {
             text-align: center;
-            cursor: pointer; /* делаем кликабельным */
+            cursor: pointer;
         }
         .color-swatch .circle {
             width: 44px;
@@ -932,7 +932,6 @@
             .dresscode-block, .important-block, .rsvp-form-block { padding: 16px 16px 14px 16px; }
             .dresscode-block p, .important-block p, .rsvp-form-block p { font-size: 14px; }
 
-            /* ----- ИЗМЕНЕНИЯ ДЛЯ ФОРМЫ НА МОБИЛЬНЫХ ----- */
             .rsvp-form-block {
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
@@ -995,7 +994,6 @@
             }
         }
 
-        /* ===== БАЗОВЫЕ СТИЛИ ДЛЯ ФОРМЫ (не мобильные) ===== */
         .rsvp-form-block {
             overflow: auto;
             -webkit-overflow-scrolling: touch;
@@ -1032,11 +1030,12 @@
     <div class="hero-section">
         <div class="hero-bg" id="heroBg">
             <div class="hero-bg-slides" id="heroBgSlides">
-                <!-- ⬇️ ЗАМЕНИТЕ НА СВОИ ФАЙЛЫ ⬇️ -->
+                <!-- 5 слайдов: cat1, cat2, cat3, cat4, cat1 (клон) -->
                 <div class="hero-bg-slide"><img src="cat1.jpg" alt="Фон 1" /></div>
                 <div class="hero-bg-slide"><img src="cat2.jpg" alt="Фон 2" /></div>
                 <div class="hero-bg-slide"><img src="cat3.jpg" alt="Фон 3" /></div>
                 <div class="hero-bg-slide"><img src="cat4.jpg" alt="Фон 4" /></div>
+                <div class="hero-bg-slide"><img src="cat1.jpg" alt="Фон 1 клон" /></div>
             </div>
         </div>
         <div class="hero-content">
@@ -1149,7 +1148,6 @@
                 <p style="margin-bottom:4px;"><strong>18 сентября</strong> — официальная часть:</p>
                 <p>Будем благодарны, если предпочтёте <strong>классические наряды нюдовых, пастельных или других сдержанных тонов</strong>.</p>
                 <div class="color-swatches">
-                    <!-- Новый порядок: Бежевый, Персиковый, Пыльная роза, Мальвовый, Лавандовый, ... -->
                     <div class="color-swatch"><div class="circle" style="background:#e8d5c4;" data-img="ref1.jpg"></div><span class="label">Бежевый</span></div>
                     <div class="color-swatch"><div class="circle" style="background:#e8c9b0;" data-img="ref2.jpg"></div><span class="label">Персиковый</span></div>
                     <div class="color-swatch"><div class="circle" style="background:#dbb8a8;" data-img="ref3.jpg"></div><span class="label">Пыльная роза</span></div>
@@ -1685,7 +1683,6 @@
         let hours = String(Math.floor((diff / (1000*60*60)) % 24)).padStart(2, '0');
         let minutes = String(Math.floor((diff / (1000*60)) % 60)).padStart(2, '0');
 
-        // Применяем арабские цифры, если нужно
         let displayDays = days, displayHours = hours, displayMinutes = minutes;
         if (currentLang === 'ar') {
             displayDays = toArabicDigits(days);
@@ -1693,7 +1690,6 @@
             displayMinutes = toArabicDigits(minutes);
         }
 
-        // Обновляем только если изменилось
         if (displayDays !== prevDays) {
             document.getElementById('days').textContent = displayDays;
             prevDays = displayDays;
@@ -1711,20 +1707,39 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
-    // ---------- КАРУСЕЛЬ-ФОН (переключается каждые 5 секунд) ----------
+    // ---------- КАРУСЕЛЬ-ФОН (бесконечная прокрутка влево) ----------
     const heroSlides = document.getElementById('heroBgSlides');
-    const heroTotal = heroSlides.children.length;
+    const heroTotal = heroSlides.children.length; // теперь 5
     let heroIndex = 0;
     let heroInterval;
 
     function goToHeroSlide(index) {
+        // Ограничиваем индекс в пределах [0, heroTotal-1]
         if (index < 0) index = heroTotal - 1;
         if (index >= heroTotal) index = 0;
         heroIndex = index;
-        heroSlides.style.transform = 'translateX(-' + (heroIndex * 100 / heroTotal) + '%)';
+        const offset = - (heroIndex * 100 / heroTotal);
+        heroSlides.style.transform = 'translateX(' + offset + '%)';
+
+        // Если дошли до последнего (клона первого слайда), через время анимации сбрасываем на первый без анимации
+        if (index === heroTotal - 1) {
+            setTimeout(function() {
+                heroSlides.style.transition = 'none';
+                heroIndex = 0;
+                heroSlides.style.transform = 'translateX(0%)';
+                // Возвращаем transition через два микротика, чтобы браузер успел перерисовать
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        heroSlides.style.transition = 'transform 0.8s ease';
+                    });
+                });
+            }, 800); // соответствует transition-duration
+        }
     }
 
-    function nextHeroSlide() { goToHeroSlide(heroIndex + 1); }
+    function nextHeroSlide() {
+        goToHeroSlide(heroIndex + 1);
+    }
 
     heroInterval = setInterval(nextHeroSlide, 5000);
 
@@ -1738,7 +1753,6 @@
         mdf: document.getElementById('lang-mdf')
     };
 
-    // Элементы для динамических текстов
     const groomEl = document.getElementById('groomName');
     const brideEl = document.getElementById('brideName');
     const monthEl = document.getElementById('monthText');
@@ -1795,15 +1809,12 @@
 
     function setLanguage(lang) {
         currentLang = lang;
-        // Скрыть/показать контейнеры
         for (var key in containers) {
             containers[key].classList.toggle('hidden', key !== lang);
         }
-        // Активная вкладка
         langTabs.forEach(function(tab) {
             tab.classList.toggle('active', tab.dataset.lang === lang);
         });
-        // Обновить текст
         var t = translations[lang];
         if (t) {
             groomEl.textContent = t.groom;
@@ -1815,17 +1826,13 @@
             timerHours.textContent = t.timer.hours;
             timerMinutes.textContent = t.timer.minutes;
         }
-        // Обновить число дня (18) с учётом арабских цифр
         if (lang === 'ar') {
             dayNumber.textContent = '١٨';
         } else {
             dayNumber.textContent = '18';
         }
-        // Обновить таймер с учётом текущего языка
-        // Сбросим сохранённые значения, чтобы принудительно обновить при смене языка
         prevDays = prevHours = prevMinutes = '';
         updateTimer();
-        // Добавляем класс для арабского стиля
         mainCard.classList.remove('lang-ar');
         if (lang === 'ar') {
             mainCard.classList.add('lang-ar');
@@ -1840,7 +1847,6 @@
 
     // ---------- КНОПКА «НАВЕРХ» ----------
     const backToTopBtn = document.getElementById('backToTop');
-
     window.addEventListener('scroll', function() {
         if (window.scrollY > 300) {
             backToTopBtn.classList.add('visible');
@@ -1848,12 +1854,8 @@
             backToTopBtn.classList.remove('visible');
         }
     });
-
     backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // ---------- МОДАЛЬНОЕ ОКНО ДЛЯ РЕФЕРЕНСОВ ЦВЕТОВ ----------
@@ -1861,7 +1863,6 @@
     const modalImage = document.getElementById('modalImage');
     const modalClose = document.getElementById('modalClose');
 
-    // Обработчики на все кружки
     document.querySelectorAll('.color-swatch .circle').forEach(function(circle) {
         circle.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -1873,19 +1874,16 @@
         });
     });
 
-    // Закрытие по крестику
     modalClose.addEventListener('click', function() {
         modalOverlay.classList.remove('active');
     });
 
-    // Закрытие по клику на фон
     modalOverlay.addEventListener('click', function(e) {
         if (e.target === modalOverlay) {
             modalOverlay.classList.remove('active');
         }
     });
 
-    // Закрытие по ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
             modalOverlay.classList.remove('active');
