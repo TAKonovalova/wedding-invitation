@@ -655,6 +655,7 @@
         }
         .color-swatch {
             text-align: center;
+            cursor: pointer; /* делаем кликабельным */
         }
         .color-swatch .circle {
             width: 44px;
@@ -784,6 +785,64 @@
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО ДЛЯ РЕФЕРЕНСОВ ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border-radius: 24px;
+            max-width: 90vw;
+            max-height: 90vh;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            border-radius: 12px;
+        }
+        .modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 40px;
+            height: 40px;
+            background: #c9a87c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 28px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        .modal-close:hover {
+            background: #b8956a;
         }
 
         /* ===== АДАПТИВ ===== */
@@ -948,7 +1007,6 @@
             border: none;
             display: block;
         }
-
     </style>
 </head>
 <body>
@@ -1091,18 +1149,19 @@
                 <p style="margin-bottom:4px;"><strong>18 сентября</strong> — официальная часть:</p>
                 <p>Будем благодарны, если предпочтёте <strong>классические наряды нюдовых, пастельных или других сдержанных тонов</strong>.</p>
                 <div class="color-swatches">
-                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;"></div><span class="label">Бежевый</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;"></div><span class="label">Пыльная роза</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;"></div><span class="label">Персиковый</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#f0d8c8;"></div><span class="label">Шампань</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;"></div><span class="label">Лавандовый</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;"></div><span class="label">Мятный</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;"></div><span class="label">Серо-голубой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;"></div><span class="label">Оливковый</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;"></div><span class="label">Горчичный</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;"></div><span class="label">Графит</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;"></div><span class="label">Тёмно-синий</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;"></div><span class="label">Бордовый</span></div>
+                    <!-- Новый порядок: Бежевый, Персиковый, Пыльная роза, Мальвовый, Лавандовый, ... -->
+                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;" data-img="ref1.jpg"></div><span class="label">Бежевый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;" data-img="ref2.jpg"></div><span class="label">Персиковый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;" data-img="ref3.jpg"></div><span class="label">Пыльная роза</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#cf8d99;" data-img="ref4.jpg"></div><span class="label">Мальвовый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;" data-img="ref5.jpg"></div><span class="label">Лавандовый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;" data-img="ref6.jpg"></div><span class="label">Мятный</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;" data-img="ref7.jpg"></div><span class="label">Серо-голубой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;" data-img="ref8.jpg"></div><span class="label">Оливковый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;" data-img="ref9.jpg"></div><span class="label">Горчичный</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;" data-img="ref10.jpg"></div><span class="label">Графит</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;" data-img="ref11.jpg"></div><span class="label">Тёмно-синий</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;" data-img="ref12.jpg"></div><span class="label">Бордовый</span></div>
                 </div>
                 <p style="margin-top:12px;"><strong>19 сентября (неформальный день):</strong> свободный стиль, комфортная повседневная одежда.</p>
             </div>
@@ -1203,18 +1262,18 @@
                 <p style="margin-bottom:4px;"><strong>September 18</strong> — formal part:</p>
                 <p>We would be grateful if you prefer <strong>nude, pastel or subdued classic</strong> outfits. Please leave <strong>white</strong> as the bride's privilege on this day.</p>
                 <div class="color-swatches">
-                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;"></div><span class="label">Beige</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;"></div><span class="label">Dusty rose</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;"></div><span class="label">Peach</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#f0d8c8;"></div><span class="label">Champagne</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;"></div><span class="label">Lavender</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;"></div><span class="label">Mint</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;"></div><span class="label">Grey-blue</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;"></div><span class="label">Olive</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;"></div><span class="label">Mustard</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;"></div><span class="label">Graphite</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;"></div><span class="label">Navy</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;"></div><span class="label">Burgundy</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;" data-img="ref1.jpg"></div><span class="label">Beige</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;" data-img="ref2.jpg"></div><span class="label">Peach</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;" data-img="ref3.jpg"></div><span class="label">Dusty rose</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#cf8d99;" data-img="ref4.jpg"></div><span class="label">Mauve</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;" data-img="ref5.jpg"></div><span class="label">Lavender</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;" data-img="ref6.jpg"></div><span class="label">Mint</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;" data-img="ref7.jpg"></div><span class="label">Grey-blue</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;" data-img="ref8.jpg"></div><span class="label">Olive</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;" data-img="ref9.jpg"></div><span class="label">Mustard</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;" data-img="ref10.jpg"></div><span class="label">Graphite</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;" data-img="ref11.jpg"></div><span class="label">Navy</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;" data-img="ref12.jpg"></div><span class="label">Burgundy</span></div>
                 </div>
                 <p style="margin-top:12px;"><strong>September 19 (informal day):</strong> casual, comfortable everyday wear.</p>
             </div>
@@ -1315,18 +1374,18 @@
                 <p style="margin-bottom:4px;"><strong>١٨ سبتمبر</strong> — الجزء الرسمي:</p>
                 <p>سنكون ممتنين إذا اخترتم ملابس <strong>محايدة، باستيل أو كلاسيكية هادئة</strong>. نرجو ترك <strong>اللون الأبيض</strong> امتيازاً للعروس في هذا اليوم.</p>
                 <div class="color-swatches">
-                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;"></div><span class="label">بيج</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;"></div><span class="label">وردي باهت</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;"></div><span class="label">خوخي</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#f0d8c8;"></div><span class="label">شمبانيا</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;"></div><span class="label">لافندر</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;"></div><span class="label">نعناعي</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;"></div><span class="label">رمادي-أزرق</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;"></div><span class="label">زيتوني</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;"></div><span class="label">خردلي</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;"></div><span class="label">جرافيت</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;"></div><span class="label">أزرق داكن</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;"></div><span class="label">بورجوندي</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;" data-img="ref1.jpg"></div><span class="label">بيج</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;" data-img="ref2.jpg"></div><span class="label">خوخي</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;" data-img="ref3.jpg"></div><span class="label">وردي باهت</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#cf8d99;" data-img="ref4.jpg"></div><span class="label">موف</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;" data-img="ref5.jpg"></div><span class="label">لافندر</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;" data-img="ref6.jpg"></div><span class="label">نعناعي</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;" data-img="ref7.jpg"></div><span class="label">رمادي-أزرق</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;" data-img="ref8.jpg"></div><span class="label">زيتوني</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;" data-img="ref9.jpg"></div><span class="label">خردلي</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;" data-img="ref10.jpg"></div><span class="label">جرافيت</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;" data-img="ref11.jpg"></div><span class="label">أزرق داكن</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;" data-img="ref12.jpg"></div><span class="label">بورجوندي</span></div>
                 </div>
                 <p style="margin-top:12px;"><strong>١٩ سبتمبر (يوم غير رسمي):</strong> ملابس مريحة يومية.</p>
             </div>
@@ -1427,18 +1486,18 @@
                 <p style="margin-bottom:4px;"><strong>18 сентябрь</strong> — официальной пелькс:</p>
                 <p>Минь сюкпрятано, кода предпочтят <strong>нюдовой, пастельной или сдержанной классической</strong> наряд. Вешемс <strong>ашо цвет</strong> оставомс те чинь невестэнть привилегией.</p>
                 <div class="color-swatches">
-                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;"></div><span class="label">Бежевой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;"></div><span class="label">Пыльной роза</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;"></div><span class="label">Персиковой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#f0d8c8;"></div><span class="label">Шампань</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;"></div><span class="label">Лавандовой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;"></div><span class="label">Мятной</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;"></div><span class="label">Серо-голубой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;"></div><span class="label">Оливковой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;"></div><span class="label">Горчичной</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;"></div><span class="label">Графит</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;"></div><span class="label">Тёмно-синей</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;"></div><span class="label">Бордовой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;" data-img="ref1.jpg"></div><span class="label">Бежевой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;" data-img="ref2.jpg"></div><span class="label">Персиковой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;" data-img="ref3.jpg"></div><span class="label">Пыльной роза</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#cf8d99;" data-img="ref4.jpg"></div><span class="label">Мальвовый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;" data-img="ref5.jpg"></div><span class="label">Лавандовой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;" data-img="ref6.jpg"></div><span class="label">Мятной</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;" data-img="ref7.jpg"></div><span class="label">Серо-голубой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;" data-img="ref8.jpg"></div><span class="label">Оливковой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;" data-img="ref9.jpg"></div><span class="label">Горчичной</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;" data-img="ref10.jpg"></div><span class="label">Графит</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;" data-img="ref11.jpg"></div><span class="label">Тёмно-синей</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;" data-img="ref12.jpg"></div><span class="label">Бордовой</span></div>
                 </div>
                 <p style="margin-top:12px;"><strong>19 сентября (неформальной чи):</strong> оймень стиль, комфортной повседневной одежда.</p>
             </div>
@@ -1539,18 +1598,18 @@
                 <p style="margin-bottom:4px;"><strong>18 сентябрь</strong> — официальной пелькс:</p>
                 <p>Минь сюкпрятама, кода предпочтат <strong>нюдовой, пастельной или сдержанной классической</strong> наряд. Вешемс <strong>аф шуфтонь цвет</strong> оставомс те шить невестэнть привилегией.</p>
                 <div class="color-swatches">
-                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;"></div><span class="label">Бежевой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;"></div><span class="label">Пыльной роза</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;"></div><span class="label">Персиковой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#f0d8c8;"></div><span class="label">Шампань</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;"></div><span class="label">Лавандовой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;"></div><span class="label">Мятной</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;"></div><span class="label">Серо-голубой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;"></div><span class="label">Оливковой</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;"></div><span class="label">Горчичной</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;"></div><span class="label">Графит</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;"></div><span class="label">Тёмно-синей</span></div>
-                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;"></div><span class="label">Бордовой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8d5c4;" data-img="ref1.jpg"></div><span class="label">Бежевой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#e8c9b0;" data-img="ref2.jpg"></div><span class="label">Персиковой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#dbb8a8;" data-img="ref3.jpg"></div><span class="label">Пыльной роза</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#cf8d99;" data-img="ref4.jpg"></div><span class="label">Мальвовый</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#d4c4d0;" data-img="ref5.jpg"></div><span class="label">Лавандовой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c8d4c0;" data-img="ref6.jpg"></div><span class="label">Мятной</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#bcc8c4;" data-img="ref7.jpg"></div><span class="label">Серо-голубой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#b5b09c;" data-img="ref8.jpg"></div><span class="label">Оливковой</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#c4b08a;" data-img="ref9.jpg"></div><span class="label">Горчичной</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#5a5a5a;" data-img="ref10.jpg"></div><span class="label">Графит</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#2a4a5c;" data-img="ref11.jpg"></div><span class="label">Тёмно-синей</span></div>
+                    <div class="color-swatch"><div class="circle" style="background:#8a5a5a;" data-img="ref12.jpg"></div><span class="label">Бордовой</span></div>
                 </div>
                 <p style="margin-top:12px;"><strong>19 сентября (неформальной ши):</strong> оймень стиль, комфортной повседневной одежда.</p>
             </div>
@@ -1589,6 +1648,14 @@
 
 </div>
 <!-- /invitation-card -->
+
+<!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ РЕФЕРЕНСОВ ===== -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <img src="" alt="Референс" id="modalImage" />
+    </div>
+</div>
 
 <!-- ===== КНОПКА «НАВЕРХ» ===== -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">
@@ -1787,6 +1854,42 @@
             top: 0,
             behavior: 'smooth'
         });
+    });
+
+    // ---------- МОДАЛЬНОЕ ОКНО ДЛЯ РЕФЕРЕНСОВ ЦВЕТОВ ----------
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+
+    // Обработчики на все кружки
+    document.querySelectorAll('.color-swatch .circle').forEach(function(circle) {
+        circle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const imgSrc = this.dataset.img;
+            if (imgSrc) {
+                modalImage.src = imgSrc;
+                modalOverlay.classList.add('active');
+            }
+        });
+    });
+
+    // Закрытие по крестику
+    modalClose.addEventListener('click', function() {
+        modalOverlay.classList.remove('active');
+    });
+
+    // Закрытие по клику на фон
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+            modalOverlay.classList.remove('active');
+        }
+    });
+
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+            modalOverlay.classList.remove('active');
+        }
     });
 </script>
 
